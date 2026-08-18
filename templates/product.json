@@ -342,6 +342,59 @@
       "disabled": true,
       "settings": {}
     },
+    "178708450040b2e2d6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_724f42d_3EVep6": {
+          "type": "ai_gen_block_724f42d",
+          "settings": {
+            "heading": "Die Hauptinhaltsstoffe",
+            "heading_color": "#000000",
+            "heading_size": 32,
+            "heading_size_mobile": 24,
+            "heading_margin_bottom": 40,
+            "heading_margin_bottom_mobile": 30,
+            "ingredient_1_image": "{{ closest.product.metafields.custom.hauptinhaltsstoff_1.value }}",
+            "ingredient_1_title": "Kaktusfeige",
+            "ingredient_1_text": "<p>Kaktusfeigen-Extrakt ist bekannt für seine intensiv feuchtigkeitsspendenden und beruhigenden Eigenschaften. Er reduziert das Erscheinungsbild von Trockenheit und Mattigkeit – und hinterlässt die Haut weich, erfrischt und angenehm mit Feuchtigkeit versorgt.</p>",
+            "ingredient_2_image": "{{ closest.product.metafields.custom.hauptinhaltsstoff_2.value }}",
+            "ingredient_2_title": "Sodium Hyaluronat",
+            "ingredient_2_text": "<p>Als Teil einer neuen Generation bio-fermentierter Hyalonics vereint dieser Wirkstoff außergewöhnliche Reinheit mit maximaler Wirksamkeit. Er zieht Feuchtigkeit gezielt in die Haut und hält sie dort – für anhaltende Hydration, ein spürbar geglättetes Hautbild und mehr Volumen von innen.</p>",
+            "ingredient_3_image": "{{ closest.product.metafields.custom.hauptinhaltsstoff_3.value }}",
+            "ingredient_3_title": "Bisabolol",
+            "ingredient_3_text": "<p>Dieser beruhigende Wirkstoff wird natürlich aus Kamille gewonnen und ist bekannt für seine beruhigenden und hautpflegenden Eigenschaften. Er hilft gestresster oder sensibler Haut zur Ruhe zu kommen, unterstützt die Erholung von Umwelteinflüssen und mindert das Gefühl von Irritationen.</p>",
+            "desktop_width_percent": 100,
+            "max_width": 1200,
+            "grid_gap": 40,
+            "grid_gap_mobile": 30,
+            "image_max_width": 300,
+            "image_border_radius": 8,
+            "image_margin_bottom": 20,
+            "title_color": "#000000",
+            "title_size": 20,
+            "title_size_mobile": 18,
+            "title_weight": "700",
+            "title_margin_bottom": 15,
+            "text_color": "#000000",
+            "text_size": 15,
+            "text_size_mobile": 14,
+            "text_line_height": 1.6,
+            "background_color": "#ffffff",
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "section_padding_horizontal": 20,
+            "section_padding_top_mobile": 40,
+            "section_padding_bottom_mobile": 40,
+            "section_padding_horizontal_mobile": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_724f42d_3EVep6"
+      ],
+      "settings": {}
+    },
     "recently-viewed": {
       "type": "recently-viewed",
       "settings": {}
@@ -426,6 +479,7 @@
     "1786995557570165de",
     "more-products-vendor",
     "more-products-collection",
+    "178708450040b2e2d6",
     "recently-viewed",
     "faq_NywRLC",
     "recommendations",
