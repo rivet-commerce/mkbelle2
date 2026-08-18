@@ -1,0 +1,541 @@
+{% doc %}
+  @prompt
+    ich will eine meet the founder section erstellen in der Hintergrund der Brand erklärt wird erstelle dazu ein design 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-meet-founder-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-meet-founder-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.content_gap }}px;
+    align-items: center;
+  }
+
+  .ai-meet-founder-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    order: {% if block.settings.image_position == 'left' %}1{% else %}2{% endif %};
+  }
+
+  .ai-meet-founder-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    object-fit: cover;
+  }
+
+  .ai-meet-founder-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-meet-founder-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-meet-founder-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-meet-founder-content-{{ ai_gen_id }} {
+    order: {% if block.settings.image_position == 'left' %}2{% else %}1{% endif %};
+  }
+
+  .ai-meet-founder-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.label_size }}px;
+    color: {{ block.settings.label_color }};
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .ai-meet-founder-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+  }
+
+  .ai-meet-founder-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .ai-meet-founder-text-{{ ai_gen_id }} p {
+    margin-bottom: 16px;
+  }
+
+  .ai-meet-founder-text-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-meet-founder-signature-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .ai-meet-founder-signature-image-{{ ai_gen_id }} {
+    width: {{ block.settings.signature_size }}px;
+    height: auto;
+  }
+
+  .ai-meet-founder-signature-name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.name_size }}px;
+    color: {{ block.settings.text_color }};
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .ai-meet-founder-signature-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.label_color }};
+    margin: 4px 0 0 0;
+  }
+
+  .ai-meet-founder-cta-{{ ai_gen_id }} {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 32px;
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_text_size }}px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-meet-founder-cta-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_bg_color }};
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-meet-founder-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .ai-meet-founder-image-wrapper-{{ ai_gen_id }},
+    .ai-meet-founder-content-{{ ai_gen_id }} {
+      order: initial;
+    }
+
+    .ai-meet-founder-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-meet-founder-text-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.text_size }}px * 0.95);
+    }
+  }
+{% endstyle %}
+
+<meet-founder-{{ ai_gen_id }} class="ai-meet-founder-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-meet-founder-container-{{ ai_gen_id }}">
+    <div class="ai-meet-founder-image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.founder_image %}
+        <img
+          src="{{ block.settings.founder_image | image_url: width: 800 }}"
+          alt="{{ block.settings.founder_image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.founder_image.width }}"
+          height="{{ block.settings.founder_image.height }}"
+          class="ai-meet-founder-image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-meet-founder-image-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+          <div class="ai-meet-founder-empty-state-{{ ai_gen_id }}">
+            Füge ein Founder-Bild hinzu
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-meet-founder-content-{{ ai_gen_id }}">
+      {% if block.settings.label != blank %}
+        <span class="ai-meet-founder-label-{{ ai_gen_id }}">{{ block.settings.label }}</span>
+      {% endif %}
+
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-meet-founder-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      {% endif %}
+
+      {% if block.settings.story_text != blank %}
+        <div class="ai-meet-founder-text-{{ ai_gen_id }}">
+          {{ block.settings.story_text }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_signature %}
+        <div class="ai-meet-founder-signature-{{ ai_gen_id }}">
+          {% if block.settings.signature_image %}
+            <img
+              src="{{ block.settings.signature_image | image_url: width: 200 }}"
+              alt="Unterschrift"
+              class="ai-meet-founder-signature-image-{{ ai_gen_id }}"
+            >
+          {% endif %}
+          <div>
+            {% if block.settings.founder_name != blank %}
+              <p class="ai-meet-founder-signature-name-{{ ai_gen_id }}">{{ block.settings.founder_name }}</p>
+            {% endif %}
+            {% if block.settings.founder_title != blank %}
+              <p class="ai-meet-founder-signature-title-{{ ai_gen_id }}">{{ block.settings.founder_title }}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_cta and block.settings.cta_text != blank %}
+        <a href="{{ block.settings.cta_link }}" class="ai-meet-founder-cta-{{ ai_gen_id }}">
+          {{ block.settings.cta_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</meet-founder-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class MeetFounder{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('meet-founder-{{ ai_gen_id }}', MeetFounder{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Meet the founder",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content gap",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "founder_image",
+      "label": "Founder image"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Unsere Geschichte"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meet the Founder"
+    },
+    {
+      "type": "richtext",
+      "id": "story_text",
+      "label": "Story text",
+      "default": "<p>Hallo, ich bin Monique, die Gründerin von MK Beauty. Meine Leidenschaft für Schönheit und Qualität hat mich dazu inspiriert, eine Marke zu schaffen, die Frauen dabei hilft, sich selbstbewusst und schön zu fühlen.</p><p>Jedes Produkt wird mit Sorgfalt ausgewählt und getestet, um sicherzustellen, dass es den höchsten Standards entspricht. Meine Mission ist es, hochwertige Beauty-Produkte zugänglich zu machen.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Signature"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_signature",
+      "label": "Show signature",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "signature_image",
+      "label": "Signature image"
+    },
+    {
+      "type": "range",
+      "id": "signature_size",
+      "label": "Signature size",
+      "min": 60,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder name",
+      "default": "Monique Kirchheim"
+    },
+    {
+      "type": "text",
+      "id": "founder_title",
+      "label": "Founder title",
+      "default": "Gründerin & CEO"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Unsere Produkte entdecken"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label",
+      "default": "#C9AD95"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#C9AD95"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Button hover background",
+      "default": "#b39a82"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "harmonia_sans_n6"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "label": "Name size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Button text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meet the founder"
+    }
+  ]
+}
+{% endschema %}

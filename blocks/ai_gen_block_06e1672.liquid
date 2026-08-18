@@ -1,0 +1,574 @@
+{% doc %}
+  @prompt
+    Erstelle eine Custom Section („Vergleichstabelle / Das spricht für uns“):
+    
+    Structure & Content:
+    Überschrift: „Das spricht für uns“ (mittig zentriert, fett)
+    Spalten-Header:
+    Links: „MK Beauty Cosmetics“ (fett)
+    Mitte: „VS“ (dezent / grau)
+    Rechts: „ANDERE“ (fett)
+    Tabellenzeilen (Features):
+    Hautvorteile
+    Natürliche Inhaltsstoffe
+    Dermatologisch getestet
+    Nachhaltige Verpackung
+    Icon-Layout (WICHTIG):
+    Das Icon (Häkchen ✓ bzw. Kreuz ✕) und der Text in der linken/rechten Spalte müssen in einer Reihe (nebeneinander / inline) platziert sein – nicht untereinander.
+    Linke Spalte (MK Beauty Cosmetics): Grünes oder neutrales Häkchen-Icon ✓ direkt links vor dem Feature-Text.
+    Rechte Spalte (ANDERE): Rotes oder dunkles Kreuz-Icon ✕ direkt rechts nach dem Feature-Text (oder vor dem Text).
+    Mobile & Responsiv-Optimierung:
+    Die Section muss vollständig mobil-optimiert sein.
+    Auf Mobilgeräten soll die Tabelle übersichtlich und gut lesbar bleiben (kein überlappender Text, Icon und Text bleiben sauber inline auf einer Zeile).
+    Nutze dezent horizontale Trennlinien zwischen den Zeilen., Kreuz-Icon & checkmars sollen in einer Linie sein , die icons und text sollen alle in einer spalte sein  bzw alle untereinander in einer reihe, unterschiedliche texte für mk Beauty cosmectis & andere , doch nur ein text der in der Mitte der Tabelle steht 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-comparison-table-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    display: block;
+  }
+
+  .ai-comparison-table__heading-{{ ai_gen_id }} {
+    text-align: center;
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .ai-comparison-table__wrapper-{{ ai_gen_id }} {
+    max-width: {{ block.settings.table_max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-comparison-table__header-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: {{ block.settings.column_gap }}px;
+    padding: {{ block.settings.row_padding }}px 0;
+    border-bottom: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    margin-bottom: {{ block.settings.row_spacing }}px;
+  }
+
+  .ai-comparison-table__header-left-{{ ai_gen_id }} {
+    text-align: center;
+    font-weight: 700;
+    font-size: {{ block.settings.header_font_size }}px;
+    color: {{ block.settings.brand_color }};
+  }
+
+  .ai-comparison-table__header-vs-{{ ai_gen_id }} {
+    text-align: center;
+    font-weight: 400;
+    font-size: {{ block.settings.vs_font_size }}px;
+    color: {{ block.settings.vs_color }};
+    padding: 0 {{ block.settings.vs_padding }}px;
+  }
+
+  .ai-comparison-table__header-right-{{ ai_gen_id }} {
+    text-align: center;
+    font-weight: 700;
+    font-size: {{ block.settings.header_font_size }}px;
+    color: {{ block.settings.competitor_color }};
+  }
+
+  .ai-comparison-table__row-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: {{ block.settings.column_gap }}px;
+    padding: {{ block.settings.row_padding }}px 0;
+    border-bottom: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    align-items: center;
+  }
+
+  .ai-comparison-table__row-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-comparison-table__cell-left-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: {{ block.settings.icon_text_gap }}px;
+    font-size: {{ block.settings.feature_font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-comparison-table__cell-center-{{ ai_gen_id }} {
+    width: {{ block.settings.vs_column_width }}px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: {{ block.settings.feature_font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-comparison-table__cell-right-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: {{ block.settings.icon_text_gap }}px;
+    font-size: {{ block.settings.feature_font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-comparison-table__icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .ai-comparison-table__icon-check-{{ ai_gen_id }} {
+    color: {{ block.settings.check_color }};
+  }
+
+  .ai-comparison-table__icon-cross-{{ ai_gen_id }} {
+    color: {{ block.settings.cross_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-comparison-table-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.7 }}px 15px;
+    }
+
+    .ai-comparison-table__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+      margin-bottom: {{ block.settings.heading_spacing | times: 0.8 }}px;
+    }
+
+    .ai-comparison-table__header-{{ ai_gen_id }},
+    .ai-comparison-table__row-{{ ai_gen_id }} {
+      gap: {{ block.settings.column_gap | times: 0.6 }}px;
+      padding: {{ block.settings.row_padding | times: 0.8 }}px 0;
+    }
+
+    .ai-comparison-table__header-left-{{ ai_gen_id }},
+    .ai-comparison-table__header-right-{{ ai_gen_id }} {
+      font-size: {{ block.settings.header_font_size | times: 0.85 }}px;
+    }
+
+    .ai-comparison-table__header-vs-{{ ai_gen_id }} {
+      font-size: {{ block.settings.vs_font_size | times: 0.85 }}px;
+      padding: 0 {{ block.settings.vs_padding | times: 0.6 }}px;
+    }
+
+    .ai-comparison-table__cell-left-{{ ai_gen_id }},
+    .ai-comparison-table__cell-right-{{ ai_gen_id }},
+    .ai-comparison-table__cell-center-{{ ai_gen_id }} {
+      gap: {{ block.settings.icon_text_gap | times: 0.7 }}px;
+      font-size: {{ block.settings.feature_font_size | times: 0.9 }}px;
+    }
+
+    .ai-comparison-table__icon-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.85 }}px;
+      height: {{ block.settings.icon_size | times: 0.85 }}px;
+    }
+
+    .ai-comparison-table__cell-center-{{ ai_gen_id }} {
+      width: {{ block.settings.vs_column_width | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-comparison-table-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-comparison-table__wrapper-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-comparison-table__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-comparison-table__header-{{ ai_gen_id }}">
+      <div class="ai-comparison-table__header-left-{{ ai_gen_id }}">
+        {{ block.settings.brand_name }}
+      </div>
+      <div class="ai-comparison-table__header-vs-{{ ai_gen_id }}">
+        {{ block.settings.vs_text }}
+      </div>
+      <div class="ai-comparison-table__header-right-{{ ai_gen_id }}">
+        {{ block.settings.competitor_name }}
+      </div>
+    </div>
+
+    {% if block.settings.feature_1 != blank %}
+      <div class="ai-comparison-table__row-{{ ai_gen_id }}">
+        <div class="ai-comparison-table__cell-left-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-check-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="ai-comparison-table__cell-center-{{ ai_gen_id }}">
+          {{ block.settings.feature_1 }}
+        </div>
+        <div class="ai-comparison-table__cell-right-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-cross-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.feature_2 != blank %}
+      <div class="ai-comparison-table__row-{{ ai_gen_id }}">
+        <div class="ai-comparison-table__cell-left-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-check-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="ai-comparison-table__cell-center-{{ ai_gen_id }}">
+          {{ block.settings.feature_2 }}
+        </div>
+        <div class="ai-comparison-table__cell-right-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-cross-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.feature_3 != blank %}
+      <div class="ai-comparison-table__row-{{ ai_gen_id }}">
+        <div class="ai-comparison-table__cell-left-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-check-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="ai-comparison-table__cell-center-{{ ai_gen_id }}">
+          {{ block.settings.feature_3 }}
+        </div>
+        <div class="ai-comparison-table__cell-right-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-cross-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.feature_4 != blank %}
+      <div class="ai-comparison-table__row-{{ ai_gen_id }}">
+        <div class="ai-comparison-table__cell-left-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-check-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="ai-comparison-table__cell-center-{{ ai_gen_id }}">
+          {{ block.settings.feature_4 }}
+        </div>
+        <div class="ai-comparison-table__cell-right-{{ ai_gen_id }}">
+          <svg class="ai-comparison-table__icon-{{ ai_gen_id }} ai-comparison-table__icon-cross-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vergleichstabelle",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Überschrift"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Das spricht für uns"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Überschriftgröße",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Abstand unter Überschrift",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Überschriftfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spalten-Header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "brand_name",
+      "label": "Markenname (links)",
+      "default": "MK Beauty Cosmetics"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "vs_text",
+      "label": "VS Text (Mitte)",
+      "default": "VS"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "competitor_name",
+      "label": "Konkurrenzname (rechts)",
+      "default": "ANDERE"
+    },
+    {
+      "type": "range",
+      "id": "header_font_size",
+      "label": "Header-Schriftgröße",
+      "min": 12,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "vs_font_size",
+      "label": "VS Schriftgröße",
+      "min": 10,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Features"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Hautvorteile"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Natürliche Inhaltsstoffe"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "Dermatologisch getestet"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "feature_4",
+      "label": "Feature 4",
+      "default": "Nachhaltige Verpackung"
+    },
+    {
+      "type": "range",
+      "id": "feature_font_size",
+      "label": "Feature-Schriftgröße",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon-Größe",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "icon_text_gap",
+      "label": "Abstand Icon zu Text",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Häkchen-Farbe",
+      "default": "#22c55e"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Kreuz-Farbe",
+      "default": "#ef4444"
+    },
+    {
+      "type": "header",
+      "content": "Farben"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "brand_color",
+      "label": "Markenfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "competitor_color",
+      "label": "Konkurrenzfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "vs_color",
+      "label": "VS Farbe",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Trennlinienfarbe",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop-Breite",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "table_max_width",
+      "label": "Maximale Tabellenbreite",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Abschnitt-Padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "row_padding",
+      "label": "Zeilen-Padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "row_spacing",
+      "label": "Abstand nach Header",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Spaltenabstand",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "vs_column_width",
+      "label": "Mittlere Spaltenbreite",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "vs_padding",
+      "label": "VS Padding",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Trennlinienbreite",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vergleichstabelle"
+    }
+  ]
+}
+{% endschema %}

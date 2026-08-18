@@ -1,0 +1,60 @@
+{%- assign usp_icon = block.settings.usp_icon -%}
+{%- assign usp_text = block.settings.usp_text -%}
+
+{% if usp_text != blank and usp_icon != blank %}
+  <div class="product-usp__item">
+    <div class="product-usp__icon-wrapper" style="width: {{ block.settings.icon_size }}px; height: {{ block.settings.icon_size }}px;">
+      <img
+        src="{{ usp_icon | img_url: '100x100' }}"
+        alt="{{ usp_text }}"
+        class="product-usp__icon"
+        style="width: 100%; height: 100%; object-fit: contain;"
+      >
+    </div>
+    <div class="product-usp__content" style="margin-left: {{ block.settings.space_between }}px;">
+      <p
+        class="product-usp__text"
+        style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.font_size }}px; margin: 0; line-height: 1.4;"
+      >
+        {{ usp_text }}
+      </p>
+    </div>
+  </div>
+{%- endif -%}
+
+<style>
+  .product-usp__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .product-usp__icon-wrapper {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-usp__icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-usp__text {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .product-usp__item {
+      gap: 6px;
+      margin: 10px 0;
+    }
+
+    .product-usp__text {
+      font-size: 14px !important;
+    }
+  }
+</style>

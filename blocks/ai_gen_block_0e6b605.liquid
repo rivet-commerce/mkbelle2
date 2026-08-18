@@ -1,0 +1,630 @@
+{% doc %}
+  @prompt
+    Erstelle eine dreispaltige Produkt-Highlight-Sektion auf rein weißem Hintergrund. In der Mitte steht ein quadratisches Produktbild des Tiegels (MK Beauty Cosmetics - Stem Cells Mask). Links und rechts neben dem Bild befinden sich jeweils drei vertikal angeordnete Feature-Blöcke (insgesamt 6 Vorteile). Jeder Block besteht aus einem feinen, hellblauen Linien-Icon, einer kurzen, fettgedruckten Überschrift und einer prägnanten Erklärung darunter. Das gesamte Layout ist absolut symmetrisch, minimalistisch und elegant ausgerichtet
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-highlight-{{ ai_gen_id }} {
+    display: block;
+    background-color: #ffffff;
+    padding: 60px 20px;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-product-highlight-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-product-highlight-features-left-{{ ai_gen_id }},
+  .ai-product-highlight-features-right-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ai-product-highlight-features-left-{{ ai_gen_id }} {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .ai-product-highlight-features-right-{{ ai_gen_id }} {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .ai-product-highlight-feature-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 300px;
+  }
+
+  .ai-product-highlight-features-left-{{ ai_gen_id }} .ai-product-highlight-feature-{{ ai_gen_id }} {
+    flex-direction: row-reverse;
+  }
+
+  .ai-product-highlight-icon-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-product-highlight-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ai-product-highlight-feature-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .ai-product-highlight-feature-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: {{ block.settings.text_color }};
+    line-height: 1.3;
+  }
+
+  .ai-product-highlight-feature-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  .ai-product-highlight-image-wrapper-{{ ai_gen_id }} {
+    width: {{ block.settings.image_size }}px;
+    height: {{ block.settings.image_size }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-product-highlight-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-product-highlight-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    position: relative;
+  }
+
+  .ai-product-highlight-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-product-highlight-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-product-highlight-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .ai-product-highlight-features-left-{{ ai_gen_id }},
+    .ai-product-highlight-features-right-{{ ai_gen_id }} {
+      align-items: center;
+      text-align: center;
+    }
+
+    .ai-product-highlight-features-left-{{ ai_gen_id }} .ai-product-highlight-feature-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-product-highlight-feature-{{ ai_gen_id }} {
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    .ai-product-highlight-image-wrapper-{{ ai_gen_id }} {
+      order: -1;
+      margin: 0 auto;
+    }
+  }
+{% endstyle %}
+
+<product-highlight-{{ ai_gen_id }} class="ai-product-highlight-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-product-highlight-container-{{ ai_gen_id }}">
+    <div class="ai-product-highlight-features-left-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign title_key = 'feature_' | append: i | append: '_title'
+          assign description_key = 'feature_' | append: i | append: '_description'
+          assign icon_key = 'feature_' | append: i | append: '_icon'
+          
+          assign title = block.settings[title_key]
+          assign description = block.settings[description_key]
+          assign icon = block.settings[icon_key]
+        %}
+        
+        <div class="ai-product-highlight-feature-{{ ai_gen_id }}">
+          <div class="ai-product-highlight-icon-{{ ai_gen_id }}">
+            {% if icon == 'leaf' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                <path d="M12 6c-3.31 0-6 2.69-6 6h2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.21-1.79 4-4 4v2c3.31 0 6-2.69 6-6s-2.69-6-6-6z"/>
+              </svg>
+            {% elsif icon == 'droplet' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            {% elsif icon == 'shield' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            {% elsif icon == 'star' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            {% elsif icon == 'heart' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            {% elsif icon == 'check' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            {% elsif icon == 'sparkles' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3v18M3 12h18M6.34 6.34l11.32 11.32M17.66 6.34L6.34 17.66"/>
+              </svg>
+            {% elsif icon == 'sun' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            {% endif %}
+          </div>
+          <div class="ai-product-highlight-feature-content-{{ ai_gen_id }}">
+            <h3 class="ai-product-highlight-feature-title-{{ ai_gen_id }}">{{ title }}</h3>
+            <p class="ai-product-highlight-feature-text-{{ ai_gen_id }}">{{ description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="ai-product-highlight-image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.product_image %}
+        <img
+          src="{{ block.settings.product_image | image_url: width: 800 }}"
+          alt="{{ block.settings.product_image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.product_image.width }}"
+          height="{{ block.settings.product_image.height }}"
+          class="ai-product-highlight-image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-product-highlight-image-placeholder-{{ ai_gen_id }}">
+          {{ 'product-1' | placeholder_svg_tag }}
+          <div class="ai-product-highlight-empty-state-{{ ai_gen_id }}">
+            Produktbild hinzufügen
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-product-highlight-features-right-{{ ai_gen_id }}">
+      {% for i in (4..6) %}
+        {% liquid
+          assign title_key = 'feature_' | append: i | append: '_title'
+          assign description_key = 'feature_' | append: i | append: '_description'
+          assign icon_key = 'feature_' | append: i | append: '_icon'
+          
+          assign title = block.settings[title_key]
+          assign description = block.settings[description_key]
+          assign icon = block.settings[icon_key]
+        %}
+        
+        <div class="ai-product-highlight-feature-{{ ai_gen_id }}">
+          <div class="ai-product-highlight-icon-{{ ai_gen_id }}">
+            {% if icon == 'leaf' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                <path d="M12 6c-3.31 0-6 2.69-6 6h2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.21-1.79 4-4 4v2c3.31 0 6-2.69 6-6s-2.69-6-6-6z"/>
+              </svg>
+            {% elsif icon == 'droplet' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            {% elsif icon == 'shield' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            {% elsif icon == 'star' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            {% elsif icon == 'heart' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            {% elsif icon == 'check' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            {% elsif icon == 'sparkles' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3v18M3 12h18M6.34 6.34l11.32 11.32M17.66 6.34L6.34 17.66"/>
+              </svg>
+            {% elsif icon == 'sun' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            {% endif %}
+          </div>
+          <div class="ai-product-highlight-feature-content-{{ ai_gen_id }}">
+            <h3 class="ai-product-highlight-feature-title-{{ ai_gen_id }}">{{ title }}</h3>
+            <p class="ai-product-highlight-feature-text-{{ ai_gen_id }}">{{ description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</product-highlight-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductHighlight{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('product-highlight-{{ ai_gen_id }}', ProductHighlight{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Produkt-Highlights",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Produktbild"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Bild"
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "label": "Bildgröße",
+      "min": 200,
+      "max": 500,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Bildecken-Radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Feature 1 (links oben)"
+    },
+    {
+      "type": "select",
+      "id": "feature_1_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "leaf", "label": "Blatt" },
+        { "value": "droplet", "label": "Tropfen" },
+        { "value": "shield", "label": "Schild" },
+        { "value": "star", "label": "Stern" },
+        { "value": "heart", "label": "Herz" },
+        { "value": "check", "label": "Haken" },
+        { "value": "sparkles", "label": "Funkeln" },
+        { "value": "sun", "label": "Sonne" }
+      ],
+      "default": "leaf"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Titel",
+      "default": "Natürliche Inhaltsstoffe"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_1_description",
+      "label": "Beschreibung",
+      "default": "100% pflanzliche Wirkstoffe für sanfte Pflege"
+    },
+    {
+      "type": "header",
+      "content": "Feature 2 (links mitte)"
+    },
+    {
+      "type": "select",
+      "id": "feature_2_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "leaf", "label": "Blatt" },
+        { "value": "droplet", "label": "Tropfen" },
+        { "value": "shield", "label": "Schild" },
+        { "value": "star", "label": "Stern" },
+        { "value": "heart", "label": "Herz" },
+        { "value": "check", "label": "Haken" },
+        { "value": "sparkles", "label": "Funkeln" },
+        { "value": "sun", "label": "Sonne" }
+      ],
+      "default": "droplet"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Titel",
+      "default": "Intensive Feuchtigkeit"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_2_description",
+      "label": "Beschreibung",
+      "default": "Tiefenwirksame Hydration für 24 Stunden"
+    },
+    {
+      "type": "header",
+      "content": "Feature 3 (links unten)"
+    },
+    {
+      "type": "select",
+      "id": "feature_3_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "leaf", "label": "Blatt" },
+        { "value": "droplet", "label": "Tropfen" },
+        { "value": "shield", "label": "Schild" },
+        { "value": "star", "label": "Stern" },
+        { "value": "heart", "label": "Herz" },
+        { "value": "check", "label": "Haken" },
+        { "value": "sparkles", "label": "Funkeln" },
+        { "value": "sun", "label": "Sonne" }
+      ],
+      "default": "shield"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Titel",
+      "default": "Dermatologisch getestet"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_3_description",
+      "label": "Beschreibung",
+      "default": "Klinisch geprüft und für alle Hauttypen geeignet"
+    },
+    {
+      "type": "header",
+      "content": "Feature 4 (rechts oben)"
+    },
+    {
+      "type": "select",
+      "id": "feature_4_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "leaf", "label": "Blatt" },
+        { "value": "droplet", "label": "Tropfen" },
+        { "value": "shield", "label": "Schild" },
+        { "value": "star", "label": "Stern" },
+        { "value": "heart", "label": "Herz" },
+        { "value": "check", "label": "Haken" },
+        { "value": "sparkles", "label": "Funkeln" },
+        { "value": "sun", "label": "Sonne" }
+      ],
+      "default": "star"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Titel",
+      "default": "Anti-Aging Wirkung"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_4_description",
+      "label": "Beschreibung",
+      "default": "Reduziert sichtbar Falten und feine Linien"
+    },
+    {
+      "type": "header",
+      "content": "Feature 5 (rechts mitte)"
+    },
+    {
+      "type": "select",
+      "id": "feature_5_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "leaf", "label": "Blatt" },
+        { "value": "droplet", "label": "Tropfen" },
+        { "value": "shield", "label": "Schild" },
+        { "value": "star", "label": "Stern" },
+        { "value": "heart", "label": "Herz" },
+        { "value": "check", "label": "Haken" },
+        { "value": "sparkles", "label": "Funkeln" },
+        { "value": "sun", "label": "Sonne" }
+      ],
+      "default": "heart"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_title",
+      "label": "Titel",
+      "default": "Sanfte Formel"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_5_description",
+      "label": "Beschreibung",
+      "default": "Ohne Parabene, Silikone und Mikroplastik"
+    },
+    {
+      "type": "header",
+      "content": "Feature 6 (rechts unten)"
+    },
+    {
+      "type": "select",
+      "id": "feature_6_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "leaf", "label": "Blatt" },
+        { "value": "droplet", "label": "Tropfen" },
+        { "value": "shield", "label": "Schild" },
+        { "value": "star", "label": "Stern" },
+        { "value": "heart", "label": "Herz" },
+        { "value": "check", "label": "Haken" },
+        { "value": "sparkles", "label": "Funkeln" },
+        { "value": "sun", "label": "Sonne" }
+      ],
+      "default": "sparkles"
+    },
+    {
+      "type": "text",
+      "id": "feature_6_title",
+      "label": "Titel",
+      "default": "Sichtbare Ergebnisse"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_6_description",
+      "label": "Beschreibung",
+      "default": "Erste Verbesserungen bereits nach 7 Tagen"
+    },
+    {
+      "type": "header",
+      "content": "Stil"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon-Farbe",
+      "default": "#87CEEB"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon-Größe",
+      "min": 30,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Titelgröße",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Beschreibungsgröße",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop-Breite",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produkt-Highlights"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,623 @@
+{% doc %}
+  @prompt
+    Erstelle eine minimalistische Hero-Sektion (Banner) mit einem zweispaltigen Split-Layout auf einem hellen, fast weißen Hintergrund.
+    Linke Seite (Text & CTA): Ganz oben steht eine kleine Sterne-Bewertung mit dem Text ‚4.9 | 20.000+ Kunden‘. Darunter folgt eine große, fette Hauptüberschrift (z. B. ‚Hautpflege trifft Regeneration.‘). Unter der Überschrift befindet sich eine Liste mit drei Bullet-Points, jeweils eingeleitet durch ein hellblaues Häkchen-Symbol. Links am Rand ist ein auffälliges, gelbes, vertikales Badge platziert. Darunter folgt ein prominenter, gelber Button mit schwarzem Text (‚Jetzt shoppen‘).
+    Rechte Seite (Produkt-Präsentation): Hier wird ein freigestelltes Banner-Bild platziert, das eine harmonisch arrangierte Produktfamilie der Marke (Tiegel und passende Ergänzungsprodukte) zeigt. Die Produkte stehen nebeneinander im Fokus.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-hero-split-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-hero-split__container-{{ ai_gen_id }} {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .ai-hero-split__left-{{ ai_gen_id }} {
+    position: relative;
+    padding-left: {{ block.settings.badge_width }}px;
+  }
+
+  .ai-hero-split__badge-{{ ai_gen_id }} {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: {{ block.settings.badge_width }}px;
+    background-color: {{ block.settings.badge_color }};
+    color: {{ block.settings.badge_text_color }};
+    padding: 20px 8px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: {{ block.settings.badge_font_size }}px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .ai-hero-split__rating-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: {{ block.settings.rating_font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-hero-split__stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 2px;
+    color: {{ block.settings.star_color }};
+  }
+
+  .ai-hero-split__stars-{{ ai_gen_id }} svg {
+    width: {{ block.settings.star_size }}px;
+    height: {{ block.settings.star_size }}px;
+    fill: currentColor;
+  }
+
+  .ai-hero-split__heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.heading_color }};
+    line-height: 1.2;
+    margin: 0 0 30px 0;
+  }
+
+  .ai-hero-split__features-{{ ai_gen_id }} {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+
+  .ai-hero-split__feature-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: {{ block.settings.feature_font_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+  }
+
+  .ai-hero-split__feature-{{ ai_gen_id }}:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-hero-split__checkmark-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: {{ block.settings.checkmark_size }}px;
+    height: {{ block.settings.checkmark_size }}px;
+    background-color: {{ block.settings.checkmark_bg_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .ai-hero-split__checkmark-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.checkmark_size }}px * 0.6);
+    height: calc({{ block.settings.checkmark_size }}px * 0.6);
+    stroke: {{ block.settings.checkmark_color }};
+    stroke-width: 3;
+    fill: none;
+  }
+
+  .ai-hero-split__cta-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .ai-hero-split__cta-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+    color: {{ block.settings.button_hover_text_color }};
+  }
+
+  .ai-hero-split__right-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-hero-split__image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .ai-hero-split__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-hero-split__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-hero-split__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .ai-hero-split__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-hero-split__container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .ai-hero-split__left-{{ ai_gen_id }} {
+      padding-left: 0;
+    }
+
+    .ai-hero-split__badge-{{ ai_gen_id }} {
+      position: static;
+      width: auto;
+      writing-mode: horizontal-tb;
+      transform: none;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .ai-hero-split__heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.7);
+    }
+
+    .ai-hero-split__right-{{ ai_gen_id }} {
+      order: -1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-hero-split__heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.6);
+    }
+
+    .ai-hero-split__feature-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.feature_font_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<hero-split-{{ ai_gen_id }} class="ai-hero-split-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-hero-split__container-{{ ai_gen_id }}">
+    <div class="ai-hero-split__left-{{ ai_gen_id }}">
+      {% if block.settings.badge_text != blank %}
+        <div class="ai-hero-split__badge-{{ ai_gen_id }}">
+          {{ block.settings.badge_text }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_rating %}
+        <div class="ai-hero-split__rating-{{ ai_gen_id }}">
+          <div class="ai-hero-split__stars-{{ ai_gen_id }}">
+            {% for i in (1..5) %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {% endfor %}
+          </div>
+          <span>{{ block.settings.rating_text }}</span>
+        </div>
+      {% endif %}
+
+      {% if block.settings.heading != blank %}
+        <h1 class="ai-hero-split__heading-{{ ai_gen_id }}">
+          {{ block.settings.heading }}
+        </h1>
+      {% endif %}
+
+      {% if block.settings.feature_1 != blank or block.settings.feature_2 != blank or block.settings.feature_3 != blank %}
+        <ul class="ai-hero-split__features-{{ ai_gen_id }}">
+          {% if block.settings.feature_1 != blank %}
+            <li class="ai-hero-split__feature-{{ ai_gen_id }}">
+              <div class="ai-hero-split__checkmark-{{ ai_gen_id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>{{ block.settings.feature_1 }}</span>
+            </li>
+          {% endif %}
+          {% if block.settings.feature_2 != blank %}
+            <li class="ai-hero-split__feature-{{ ai_gen_id }}">
+              <div class="ai-hero-split__checkmark-{{ ai_gen_id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>{{ block.settings.feature_2 }}</span>
+            </li>
+          {% endif %}
+          {% if block.settings.feature_3 != blank %}
+            <li class="ai-hero-split__feature-{{ ai_gen_id }}">
+              <div class="ai-hero-split__checkmark-{{ ai_gen_id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>{{ block.settings.feature_3 }}</span>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+
+      {% if block.settings.button_text != blank %}
+        <a href="{{ block.settings.button_link }}" class="ai-hero-split__cta-{{ ai_gen_id }}">
+          {{ block.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="ai-hero-split__right-{{ ai_gen_id }}">
+      <div class="ai-hero-split__image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.product_image %}
+          <img
+            src="{{ block.settings.product_image | image_url: width: 1200 }}"
+            alt="{{ block.settings.product_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.product_image.width }}"
+            height="{{ block.settings.product_image.height }}"
+            class="ai-hero-split__image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-hero-split__image-placeholder-{{ ai_gen_id }}">
+            {{ 'product-apparel-1' | placeholder_svg_tag }}
+            <div class="ai-hero-split__empty-state-{{ ai_gen_id }}">
+              Produktbild hinzufügen
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</hero-split-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HeroSplit{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('hero-split-{{ ai_gen_id }}', HeroSplit{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Split",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#fafafa"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Abstand oben/unten",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Bewertung"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Bewertung anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Bewertungstext",
+      "default": "4.9 | 20.000+ Kunden"
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Schriftgröße",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Sterngröße",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Sternfarbe",
+      "default": "#FFD700"
+    },
+    {
+      "type": "header",
+      "content": "Überschrift"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Hautpflege trifft Regeneration."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Schriftgröße",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Farbe",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Features"
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Natürliche Inhaltsstoffe für gesunde Haut"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Dermatologisch getestet und empfohlen"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "Sichtbare Ergebnisse in 14 Tagen"
+    },
+    {
+      "type": "range",
+      "id": "feature_font_size",
+      "label": "Schriftgröße",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "checkmark_size",
+      "label": "Häkchen-Größe",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "checkmark_bg_color",
+      "label": "Häkchen Hintergrund",
+      "default": "#E0F2FE"
+    },
+    {
+      "type": "color",
+      "id": "checkmark_color",
+      "label": "Häkchen Farbe",
+      "default": "#0EA5E9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Textfarbe",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "NEU"
+    },
+    {
+      "type": "range",
+      "id": "badge_width",
+      "label": "Badge Breite",
+      "min": 30,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Schriftgröße",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Farbe",
+      "default": "#FCD34D"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Jetzt shoppen"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Schriftgröße",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Padding vertikal",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Eckenradius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Farbe",
+      "default": "#FCD34D"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Hover Farbe",
+      "default": "#FBBF24"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Produktbild"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Produktbild"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Split"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,704 @@
+{% doc %}
+  @prompt
+    Layout & Design: Sehr minimalistisches, cleanes Layout auf einem sehr hellen, warmen Beigeton/Creme-Hintergrund.
+    Header: Oben links neben der Hauptüberschrift („Moniques Routine“) sitzt ein kleines, rundes Profilbild. Darunter folgt eine kurze Subheadline für die Beschreibung.
+    Mittelteil (dynamischer Inhalt): Auf der linken oder mittleren Seite wird der aktive Step angezeigt: Eine fette, kleingeschriebene Produktüberschrift, getrennt durch eine feine horizontale Linie mit einem Endpunkt, gefolgt von einer kurzen Anwendungsbeschreibung. (Rechts daneben bleibt Platz für das jeweilige Produktbild).
+    Navigation (Unten): Eine Reihe aus 6 runden, nummerierten Kreis-Buttons (01 bis 06). Der aktive Step ist farbig ausgefüllt (z. B. dunkelbraun) und zeigt darunter den Produkt-Typ an, während die inaktiven Steps nur fein umrandet sind. Beim Klicken auf eine Zahl wechseln Text und Produktbild passend zum jeweiligen Step., nimm die Beschreibung unter den Steps raus 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-routine-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-routine-header-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .ai-routine-profile-{{ ai_gen_id }} {
+    width: {{ block.settings.profile_size }}px;
+    height: {{ block.settings.profile_size }}px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .ai-routine-profile-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-routine-profile-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-routine-profile-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+  }
+
+  .ai-routine-header-text-{{ ai_gen_id }} {
+    flex-grow: 1;
+  }
+
+  .ai-routine-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+
+  .ai-routine-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .ai-routine-content-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    min-height: 300px;
+  }
+
+  .ai-routine-step-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ai-routine-step-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.step_title_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    text-transform: lowercase;
+    line-height: 1.2;
+  }
+
+  .ai-routine-divider-{{ ai_gen_id }} {
+    width: 100%;
+    height: 1px;
+    background-color: {{ block.settings.divider_color }};
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .ai-routine-divider-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: {{ block.settings.divider_color }};
+  }
+
+  .ai-routine-step-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .ai-routine-step-image-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-routine-step-image-{{ ai_gen_id }} img {
+    max-width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-routine-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-routine-image-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+  }
+
+  .ai-routine-navigation-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .ai-routine-nav-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-routine-nav-button-{{ ai_gen_id }} {
+    width: {{ block.settings.nav_button_size }}px;
+    height: {{ block.settings.nav_button_size }}px;
+    border-radius: 50%;
+    border: 2px solid {{ block.settings.nav_border_color }};
+    background-color: transparent;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.nav_number_size }}px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-routine-nav-button-{{ ai_gen_id }}:hover {
+    border-color: {{ block.settings.nav_active_color }};
+  }
+
+  .ai-routine-nav-button-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.nav_active_color }};
+    border-color: {{ block.settings.nav_active_color }};
+    color: {{ block.settings.nav_active_text_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-routine-content-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .ai-routine-navigation-{{ ai_gen_id }} {
+      gap: 12px;
+    }
+
+    .ai-routine-nav-button-{{ ai_gen_id }} {
+      width: calc({{ block.settings.nav_button_size }}px * 0.8);
+      height: calc({{ block.settings.nav_button_size }}px * 0.8);
+      font-size: calc({{ block.settings.nav_number_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<skincare-routine-{{ ai_gen_id }}
+  class="ai-routine-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-routine-header-{{ ai_gen_id }}">
+    <div class="ai-routine-profile-{{ ai_gen_id }}">
+      {% if block.settings.profile_image %}
+        <img
+          src="{{ block.settings.profile_image | image_url: width: 200 }}"
+          alt="{{ block.settings.profile_image.alt | escape }}"
+          loading="lazy"
+          width="200"
+          height="200"
+        >
+      {% else %}
+        <div class="ai-routine-profile-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="ai-routine-header-text-{{ ai_gen_id }}">
+      {% if block.settings.title != blank %}
+        <h2 class="ai-routine-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+      {% endif %}
+      {% if block.settings.subtitle != blank %}
+        <p class="ai-routine-subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="ai-routine-content-{{ ai_gen_id }}">
+    <div class="ai-routine-step-info-{{ ai_gen_id }}">
+      <h3 class="ai-routine-step-title-{{ ai_gen_id }}" data-step-title></h3>
+      <div class="ai-routine-divider-{{ ai_gen_id }}"></div>
+      <p class="ai-routine-step-description-{{ ai_gen_id }}" data-step-description></p>
+    </div>
+    <div class="ai-routine-step-image-{{ ai_gen_id }}" data-step-image></div>
+  </div>
+
+  <div class="ai-routine-navigation-{{ ai_gen_id }}">
+    {% for i in (1..6) %}
+      {% liquid
+        assign step_title_key = 'step_' | append: i | append: '_title'
+        assign step_description_key = 'step_' | append: i | append: '_description'
+        assign step_image_key = 'step_' | append: i | append: '_image'
+        assign step_product_key = 'step_' | append: i | append: '_product'
+
+        assign step_title = block.settings[step_title_key]
+        assign step_description = block.settings[step_description_key]
+        assign step_image = block.settings[step_image_key]
+        assign step_product = block.settings[step_product_key]
+      %}
+
+      <div
+        class="ai-routine-nav-item-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+        data-step="{{ i }}"
+        data-title="{{ step_title | escape }}"
+        data-description="{{ step_description | escape }}"
+        data-image-url="{% if step_image %}{{ step_image | image_url: width: 800 }}{% endif %}"
+        data-image-alt="{{ step_image.alt | escape }}"
+        data-product-image-url="{% if step_product.featured_image %}{{ step_product.featured_image | image_url: width: 800 }}{% endif %}"
+        data-product-image-alt="{{ step_product.featured_image.alt | escape }}"
+      >
+        <button
+          class="ai-routine-nav-button-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+          aria-label="Step {{ i }}"
+        >
+          0{{ i }}
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+</skincare-routine-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SkincareRoutine{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentStep = 1;
+      }
+
+      connectedCallback() {
+        this.navItems = this.querySelectorAll('.ai-routine-nav-item-{{ ai_gen_id }}');
+        this.stepTitle = this.querySelector('[data-step-title]');
+        this.stepDescription = this.querySelector('[data-step-description]');
+        this.stepImageContainer = this.querySelector('[data-step-image]');
+
+        this.setupEventListeners();
+        this.showStep(1);
+      }
+
+      setupEventListeners() {
+        this.navItems.forEach((item) => {
+          const button = item.querySelector('.ai-routine-nav-button-{{ ai_gen_id }}');
+          button.addEventListener('click', () => {
+            const stepNumber = parseInt(item.dataset.step);
+            this.showStep(stepNumber);
+          });
+        });
+      }
+
+      showStep(stepNumber) {
+        this.currentStep = stepNumber;
+
+        this.navItems.forEach((item) => {
+          const itemStep = parseInt(item.dataset.step);
+          const button = item.querySelector('.ai-routine-nav-button-{{ ai_gen_id }}');
+
+          if (itemStep === stepNumber) {
+            item.classList.add('active');
+            button.classList.add('active');
+
+            this.stepTitle.textContent = item.dataset.title || '';
+            this.stepDescription.textContent = item.dataset.description || '';
+
+            this.stepImageContainer.innerHTML = '';
+
+            const imageUrl = item.dataset.imageUrl || item.dataset.productImageUrl;
+            const imageAlt = item.dataset.imageAlt || item.dataset.productImageAlt;
+
+            if (imageUrl) {
+              const img = document.createElement('img');
+              img.src = imageUrl;
+              img.alt = imageAlt || '';
+              img.loading = 'lazy';
+              this.stepImageContainer.appendChild(img);
+            } else {
+              const placeholder = document.createElement('div');
+              placeholder.className = 'ai-routine-image-placeholder-{{ ai_gen_id }}';
+              placeholder.innerHTML = '{{ 'product-1' | placeholder_svg_tag }}';
+              this.stepImageContainer.appendChild(placeholder);
+            }
+          } else {
+            item.classList.remove('active');
+            button.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    customElements.define('skincare-routine-{{ ai_gen_id }}', SkincareRoutine{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Skincare routine",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "image_picker",
+      "id": "profile_image",
+      "label": "Profile image"
+    },
+    {
+      "type": "range",
+      "id": "profile_size",
+      "label": "Profile image size",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Moniques Routine"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Meine tägliche Hautpflege-Routine"
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Product name",
+      "default": "gentle cleanser"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_description",
+      "label": "Description",
+      "default": "Sanfte Reinigung für morgens und abends. Entfernt Make-up und Unreinheiten ohne die Haut auszutrocknen."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_1_image",
+      "label": "Product image"
+    },
+    {
+      "type": "product",
+      "id": "step_1_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Product name",
+      "default": "hydrating toner"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_description",
+      "label": "Description",
+      "default": "Bereitet die Haut optimal auf die nachfolgende Pflege vor und spendet intensive Feuchtigkeit."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_2_image",
+      "label": "Product image"
+    },
+    {
+      "type": "product",
+      "id": "step_2_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Product name",
+      "default": "vitamin c serum"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_description",
+      "label": "Description",
+      "default": "Hochkonzentriertes Vitamin C für einen strahlenden Teint und Schutz vor freien Radikalen."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_3_image",
+      "label": "Product image"
+    },
+    {
+      "type": "product",
+      "id": "step_3_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Step 4"
+    },
+    {
+      "type": "text",
+      "id": "step_4_title",
+      "label": "Product name",
+      "default": "eye cream"
+    },
+    {
+      "type": "textarea",
+      "id": "step_4_description",
+      "label": "Description",
+      "default": "Spezielle Pflege für die empfindliche Augenpartie. Reduziert Schwellungen und dunkle Ringe."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_4_image",
+      "label": "Product image"
+    },
+    {
+      "type": "product",
+      "id": "step_4_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Step 5"
+    },
+    {
+      "type": "text",
+      "id": "step_5_title",
+      "label": "Product name",
+      "default": "moisturizer"
+    },
+    {
+      "type": "textarea",
+      "id": "step_5_description",
+      "label": "Description",
+      "default": "Leichte Textur, die schnell einzieht und die Haut den ganzen Tag mit Feuchtigkeit versorgt."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_5_image",
+      "label": "Product image"
+    },
+    {
+      "type": "product",
+      "id": "step_5_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Step 6"
+    },
+    {
+      "type": "text",
+      "id": "step_6_title",
+      "label": "Product name",
+      "default": "sunscreen spf 50"
+    },
+    {
+      "type": "textarea",
+      "id": "step_6_description",
+      "label": "Description",
+      "default": "Hoher Lichtschutzfaktor für optimalen Schutz vor UV-Strahlung. Perfekt als letzter Schritt der Morgenroutine."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_6_image",
+      "label": "Product image"
+    },
+    {
+      "type": "product",
+      "id": "step_6_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#2C2C2C"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider",
+      "default": "#2C2C2C"
+    },
+    {
+      "type": "color",
+      "id": "nav_border_color",
+      "label": "Navigation border",
+      "default": "#D4C4B0"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_color",
+      "label": "Navigation active",
+      "default": "#5C4A3A"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_text_color",
+      "label": "Navigation active text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "step_title_size",
+      "label": "Step title size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "nav_number_size",
+      "label": "Navigation number size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "range",
+      "id": "nav_button_size",
+      "label": "Button size",
+      "min": 40,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Skincare routine"
+    }
+  ]
+}
+{% endschema %}
