@@ -283,65 +283,6 @@
       "name": "Product Highlights",
       "settings": {}
     },
-    "faq_NywRLC": {
-      "type": "faq",
-      "blocks": {
-        "question_pA9waj": {
-          "type": "question",
-          "settings": {
-            "title": "Sind eure Produkte Vegan ?",
-            "text": "<p>Ja, absolut! Alle unsere Produkte sind zu <strong>100 % vegan.</strong> Wir verzichten komplett auf tierische Inhaltsstoffe und achten auch bei der Herstellung auf tierleidfreie Alternativen.</p>"
-          }
-        },
-        "question_xYcpa7": {
-          "type": "question",
-          "settings": {
-            "title": "Sind diese Produkte Tierversuchsfrei ?",
-            "text": "<p>Ja, garantiert! <strong>Wir lehnen Tierversuche konsequent ab.</strong> Weder unsere fertigen Produkte noch die einzelnen Inhaltsstoffe werden an Tieren getestet – weder von uns noch von Dritten. <strong>Tierwohl steht bei uns an oberster Stelle.</strong></p>"
-          }
-        },
-        "question_RUeTiq": {
-          "type": "question",
-          "settings": {
-            "title": "Sind eure Produkte für alle Hauttypen ?",
-            "text": "<p>Ja, unsere Produkte wurden so formuliert, dass sie für <strong>alle Hauttypen geeignet</strong> sind – von trockener über ölige bis hin zu empfindlicher Haut. Wir setzen auf sanfte, gut verträgliche Inhaltsstoffe, die die natürliche Hautbarriere unterstützen.</p><p></p>"
-          }
-        },
-        "question_QLXLn9": {
-          "type": "question",
-          "settings": {
-            "title": "Sind eure Produkte dermatolisch getestet ?",
-            "text": "<p><strong>Ja</strong>, unsere Produkte sind <strong>alle dermatologisch getestet. </strong>Die Hautverträglichkeit wurde in unabhängigen Tests sorgfältig geprüft und bestätigt, sodass du sie auch bei empfindlicher Haut bedenkenlos anwenden kannst.</p>"
-          }
-        },
-        "question_j9wCqP": {
-          "type": "question",
-          "settings": {
-            "title": "Werden eure Produkte auf Qualität geprüft ?",
-            "text": "<p>Ja, Qualität hat bei uns höchste Priorität. Jedes unserer Produkte durchläuft <strong>während und nach</strong> der Herstellung <strong>strenge</strong> <strong>Qualitätskontrollen</strong> sowie mikrobiologische Tests. So stellen wir sicher, dass nur einwandfreie und hochwertige Produkte bei dir ankommen.</p>"
-          }
-        },
-        "question_T9a9Pn": {
-          "type": "question",
-          "settings": {
-            "title": "Warum habt ihr keine Umkartons / Zusatzverpackung ?",
-            "text": "<p>Das hat zwei einfache Gründe: Nachhaltigkeit und Fairness.</p><p>Wir <strong>verzichten</strong> bewusst auf unnötige Verpackungen, die am Ende ohnehin im Müll landen – das <strong>schont die Umwelt und spart Kosten</strong>. Statt dein Geld in teuren Verpackungs-Schnickschnack zu stecken, <strong>investieren</strong> wir lieber direkt <strong>in hochwertige Inhaltsstoffe</strong>.</p><p>So zahlst du nur für das, was wirklich zählt: <strong>maximale Qualität</strong> für deine Haut zu einem <strong>fairen Preis!</strong></p>"
-          }
-        }
-      },
-      "block_order": [
-        "question_pA9waj",
-        "question_xYcpa7",
-        "question_RUeTiq",
-        "question_QLXLn9",
-        "question_j9wCqP",
-        "question_T9a9Pn"
-      ],
-      "name": "FAQ",
-      "settings": {
-        "title": "FAQs"
-      }
-    },
     "1786995557570165de": {
       "type": "_blocks",
       "blocks": {
@@ -409,6 +350,65 @@
       "type": "recently-viewed",
       "settings": {}
     },
+    "faq_NywRLC": {
+      "type": "faq",
+      "blocks": {
+        "question_pA9waj": {
+          "type": "question",
+          "settings": {
+            "title": "Sind eure Produkte Vegan ?",
+            "text": "<p>Ja, absolut! Alle unsere Produkte sind zu <strong>100 % vegan.</strong> Wir verzichten komplett auf tierische Inhaltsstoffe und achten auch bei der Herstellung auf tierleidfreie Alternativen.</p>"
+          }
+        },
+        "question_xYcpa7": {
+          "type": "question",
+          "settings": {
+            "title": "Sind diese Produkte Tierversuchsfrei ?",
+            "text": "<p>Ja, garantiert! <strong>Wir lehnen Tierversuche konsequent ab.</strong> Weder unsere fertigen Produkte noch die einzelnen Inhaltsstoffe werden an Tieren getestet – weder von uns noch von Dritten. <strong>Tierwohl steht bei uns an oberster Stelle.</strong></p>"
+          }
+        },
+        "question_RUeTiq": {
+          "type": "question",
+          "settings": {
+            "title": "Sind eure Produkte für alle Hauttypen ?",
+            "text": "<p>Ja, unsere Produkte wurden so formuliert, dass sie für <strong>alle Hauttypen geeignet</strong> sind – von trockener über ölige bis hin zu empfindlicher Haut. Wir setzen auf sanfte, gut verträgliche Inhaltsstoffe, die die natürliche Hautbarriere unterstützen.</p><p></p>"
+          }
+        },
+        "question_QLXLn9": {
+          "type": "question",
+          "settings": {
+            "title": "Sind eure Produkte dermatolisch getestet ?",
+            "text": "<p><strong>Ja</strong>, unsere Produkte sind <strong>alle dermatologisch getestet. </strong>Die Hautverträglichkeit wurde in unabhängigen Tests sorgfältig geprüft und bestätigt, sodass du sie auch bei empfindlicher Haut bedenkenlos anwenden kannst.</p>"
+          }
+        },
+        "question_j9wCqP": {
+          "type": "question",
+          "settings": {
+            "title": "Werden eure Produkte auf Qualität geprüft ?",
+            "text": "<p>Ja, Qualität hat bei uns höchste Priorität. Jedes unserer Produkte durchläuft <strong>während und nach</strong> der Herstellung <strong>strenge</strong> <strong>Qualitätskontrollen</strong> sowie mikrobiologische Tests. So stellen wir sicher, dass nur einwandfreie und hochwertige Produkte bei dir ankommen.</p>"
+          }
+        },
+        "question_T9a9Pn": {
+          "type": "question",
+          "settings": {
+            "title": "Warum habt ihr keine Umkartons / Zusatzverpackung ?",
+            "text": "<p>Das hat zwei einfache Gründe: Nachhaltigkeit und Fairness.</p><p>Wir <strong>verzichten</strong> bewusst auf unnötige Verpackungen, die am Ende ohnehin im Müll landen – das <strong>schont die Umwelt und spart Kosten</strong>. Statt dein Geld in teuren Verpackungs-Schnickschnack zu stecken, <strong>investieren</strong> wir lieber direkt <strong>in hochwertige Inhaltsstoffe</strong>.</p><p>So zahlst du nur für das, was wirklich zählt: <strong>maximale Qualität</strong> für deine Haut zu einem <strong>fairen Preis!</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_pA9waj",
+        "question_xYcpa7",
+        "question_RUeTiq",
+        "question_QLXLn9",
+        "question_j9wCqP",
+        "question_T9a9Pn"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "title": "FAQs"
+      }
+    },
     "collection-return": {
       "type": "collection-return",
       "settings": {
@@ -421,12 +421,12 @@
     "sub",
     "17838566065fbfef1d",
     "1783857243f2fe7617",
-    "faq_NywRLC",
     "1786995557570165de",
     "recommendations",
     "more-products-vendor",
     "more-products-collection",
     "recently-viewed",
+    "faq_NywRLC",
     "collection-return"
   ]
 }
