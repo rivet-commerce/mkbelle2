@@ -283,55 +283,6 @@
       "name": "Product Highlights",
       "settings": {}
     },
-    "1786995557570165de": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_06e1672_4TNXKm": {
-          "type": "ai_gen_block_06e1672",
-          "settings": {
-            "heading": "Das spricht für uns",
-            "heading_size": 32,
-            "heading_spacing": 30,
-            "heading_color": "#000000",
-            "brand_name": "MK Beauty Cosmetics",
-            "vs_text": "VS",
-            "competitor_name": "ANDERE",
-            "header_font_size": 18,
-            "vs_font_size": 14,
-            "feature_1": "Für alle Hauttypen",
-            "feature_2": "Natürliche Inhaltsstoffe",
-            "feature_3": "Dermatologisch getestet",
-            "feature_4": "Made in Germany",
-            "feature_font_size": 15,
-            "icon_size": 20,
-            "icon_text_gap": 8,
-            "check_color": "#22c55e",
-            "cross_color": "#ef4444",
-            "background_color": "#ffffff",
-            "text_color": "#000000",
-            "brand_color": "#000000",
-            "competitor_color": "#000000",
-            "vs_color": "#999999",
-            "border_color": "#e5e5e5",
-            "desktop_width_percent": 100,
-            "table_max_width": 800,
-            "section_padding": 40,
-            "row_padding": 16,
-            "row_spacing": 10,
-            "column_gap": 20,
-            "vs_column_width": 120,
-            "vs_padding": 10,
-            "border_width": 1
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_06e1672_4TNXKm"
-      ],
-      "name": "Vergleichstabelle",
-      "settings": {}
-    },
     "more-products-vendor": {
       "type": "more-products-vendor",
       "disabled": true,
@@ -388,11 +339,52 @@
             "section_padding_horizontal_mobile": 15
           },
           "blocks": {}
+        },
+        "ai_gen_block_06e1672_fAfFLX": {
+          "type": "ai_gen_block_06e1672",
+          "settings": {
+            "heading": "Das spricht für uns",
+            "heading_size": 32,
+            "heading_spacing": 30,
+            "heading_color": "#000000",
+            "brand_name": "MK Beauty Cosmetics",
+            "vs_text": "VS",
+            "competitor_name": "ANDERE",
+            "header_font_size": 18,
+            "vs_font_size": 14,
+            "feature_1": "Für alle Hauttypen",
+            "feature_2": "Natürliche Inhaltsstoffe",
+            "feature_3": "Dermatologisch getestet",
+            "feature_4": "Made in Germany",
+            "feature_font_size": 15,
+            "icon_size": 20,
+            "icon_text_gap": 8,
+            "check_color": "#22c55e",
+            "cross_color": "#ef4444",
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "brand_color": "#000000",
+            "competitor_color": "#000000",
+            "vs_color": "#999999",
+            "border_color": "#e5e5e5",
+            "desktop_width_percent": 100,
+            "table_max_width": 800,
+            "section_padding": 40,
+            "row_padding": 16,
+            "row_spacing": 10,
+            "column_gap": 20,
+            "vs_column_width": 120,
+            "vs_padding": 10,
+            "border_width": 1
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_724f42d_3EVep6"
+        "ai_gen_block_724f42d_3EVep6",
+        "ai_gen_block_06e1672_fAfFLX"
       ],
+      "name": "Hauptinhaltsstoffe",
       "settings": {}
     },
     "recently-viewed": {
@@ -476,7 +468,6 @@
     "sub",
     "17838566065fbfef1d",
     "1783857243f2fe7617",
-    "1786995557570165de",
     "more-products-vendor",
     "more-products-collection",
     "178708450040b2e2d6",
