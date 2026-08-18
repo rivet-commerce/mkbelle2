@@ -340,10 +340,12 @@
     },
     "more-products-vendor": {
       "type": "more-products-vendor",
+      "disabled": true,
       "settings": {}
     },
     "more-products-collection": {
       "type": "more-products-collection",
+      "disabled": true,
       "settings": {}
     },
     "recently-viewed": {
