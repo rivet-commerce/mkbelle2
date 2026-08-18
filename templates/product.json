@@ -1,1 +1,424 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title_ctLdWw":{"type":"title","settings":{"heading_tag":"h1"}},"text_3d7LUB":{"type":"text","name":"Subtitle","settings":{"text":"{{ product.metafields.custom.subtitle.value }}"}},"price":{"type":"price","settings":{}},"product_benefits_amjetK":{"type":"product-benefits","name":"Product Benefits (USP_1)","settings":{"usp_icon":"shopify:\/\/shop_images\/usp.icon.svg","usp_text":"{{ product.metafields.custom.usp_1.value }}","icon_size":22,"space_between":0,"text_color":"#000000","font_size":15}},"product_benefits_ai3CBw":{"type":"product-benefits","name":"Product Benefits (USP_2)","settings":{"usp_icon":"shopify:\/\/shop_images\/usp.icon.svg","usp_text":"{{ product.metafields.custom.usp_2.value }}","icon_size":22,"space_between":0,"text_color":"#000000","font_size":15}},"product_benefits_FH7Xa6":{"type":"product-benefits","name":"Product Benefits (USP_3)","settings":{"usp_icon":"shopify:\/\/shop_images\/usp.icon.svg","usp_text":"{{ product.metafields.custom.usp_3.value }}","icon_size":22,"space_between":0,"text_color":"#000000","font_size":15}},"product_benefits_jHhmxE":{"type":"product-benefits","name":"Product Benefits (USP_4)","settings":{"usp_icon":"shopify:\/\/shop_images\/usp.icon.svg","usp_text":"{{ product.metafields.custom.usp_4.value }}","icon_size":22,"space_between":0,"text_color":"#000000","font_size":15}},"product_benefits_Rxz8pg":{"type":"product-benefits","name":"Product Benefits (USP_5)","settings":{"usp_icon":"shopify:\/\/shop_images\/usp.icon.svg","usp_text":"{{ product.metafields.custom.usp_5.value }}","icon_size":22,"space_between":0,"text_color":"#000000","font_size":15}},"variant_picker":{"type":"variant_picker","settings":{"variant_labels":true,"picker_type":"button","color_swatches":false}},"custom_jVNfkh":{"type":"custom","name":"Delivery","settings":{"code":"<style>\n  .delivery-badge {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n    margin: 20px 0;\n    font-size: 16px;\n    font-weight: 500;\n    color: #C9AD95;\n  }\n\n  .delivery-dot-outer {\n    width: 16px;\n    height: 16px;\n    background-color: #E8E8E1;\n    border-radius: 50%;\n    flex-shrink: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .delivery-dot-inner {\n    width: 10px;\n    height: 10px;\n    background-color: #C9AD95;\n    border-radius: 50%;\n  }\n<\/style>\n\n<div class=\"delivery-badge\">\n  <div class=\"delivery-dot-outer\">\n    <div class=\"delivery-dot-inner\"><\/div>\n  <\/div>\n  <span> In 1–3 Werktagen schon bei dir <\/span>\n<\/div>"}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":false,"surface_pickup_enable":false}},"tab_xnJytG":{"type":"tab","settings":{"title":"Beschreibung","content":"{{ product.description }}","page":""}},"tab_4HB3aa":{"type":"tab","settings":{"title":"Inhaltsstoffe","content":"<p>{{ product.metafields.custom.inhaltsstoffe | metafield_tag }}<\/p>","page":""}},"tab_hddr6V":{"type":"tab","settings":{"title":"Anwendung","content":"<p>{{ product.metafields.custom.anwendung | metafield_tag }}<\/p>","page":""}},"tab_hHrqaa":{"type":"tab","settings":{"title":"Lieferung","content":"<p>Die Lieferung dauert max. 2-4 Werktage ab Bestelldatum. Sobald dein Paket versandt wurde, erhältst du eine E-Mail mit allen relevanten Tracking-Details. Wir akzeptieren Rücksendungen innerhalb von 14 Tagen nach dem Kauf<\/p>","page":""}},"tab_xCFwwf":{"type":"tab","settings":{"title":"Informationen","content":"<p>{{ product.metafields.custom.hersteller | metafield_tag }}<\/p>","page":""}},"contact_Lzbkfi":{"type":"contact","settings":{"title":"Haben Sie Fragen?","phone":false}}},"block_order":["title_ctLdWw","text_3d7LUB","price","product_benefits_amjetK","product_benefits_ai3CBw","product_benefits_FH7Xa6","product_benefits_jHhmxE","product_benefits_Rxz8pg","variant_picker","custom_jVNfkh","buy_buttons","tab_xnJytG","tab_4HB3aa","tab_hddr6V","tab_hHrqaa","tab_xCFwwf","contact_Lzbkfi"],"settings":{"sku_enable":false,"image_position":"left","image_container_size":"small","product_image_size":"square","product_zoom_enable":true,"thumbnail_position":"beside","thumbnail_arrows":false,"mobile_layout":"partial","enable_video_looping":true,"product_video_style":"muted"}},"sub":{"type":"product-full-width","disabled":true,"settings":{}},"17838566065fbfef1d":{"type":"_blocks","blocks":{"ai_gen_block_e38fb13_bwfBtq":{"type":"ai_gen_block_e38fb13","disabled":true,"settings":{"heading":"Kennst du das?","heading_size":36,"heading_color":"#000000","heading_spacing":50,"problem_1_icon":"wrinkles","problem_1_title":"Falten & feine Linien","problem_1_description":"Sichtbare Zeichen der Hautalterung, die dich älter aussehen lassen.","problem_2_icon":"dryness","problem_2_title":"Trockene Haut","problem_2_description":"Mangelnde Feuchtigkeit führt zu Spannungsgefühl und rauer Textur.","problem_3_icon":"dullness","problem_3_title":"Fahler Teint","problem_3_description":"Müde aussehende Haut ohne natürliche Ausstrahlung und Frische.","icon_size":60,"icon_color":"#c9ad95","icon_spacing":20,"title_size":18,"title_color":"#000000","title_spacing":12,"description_size":14,"description_color":"#666666","max_width":1200,"column_gap":40,"section_padding":80,"background_color":"#ffffff","desktop_width_percent":100},"blocks":{}}},"block_order":["ai_gen_block_e38fb13_bwfBtq"],"name":"Identifkation","settings":{}},"1783857243f2fe7617":{"type":"_blocks","blocks":{"ai_gen_block_0e6b605_kxh3NY":{"type":"ai_gen_block_0e6b605","settings":{"product_image":"{{ closest.product.featured_image }}","image_size":400,"image_border_radius":8,"feature_1_icon":"leaf","feature_1_title":"Natürliche Inhaltsstoffe","feature_1_description":"100% pflanzliche Wirkstoffe für sanfte Pflege","feature_2_icon":"droplet","feature_2_title":"Intensive Feuchtigkeit","feature_2_description":"Tiefenwirksame Hydration für 24 Stunden","feature_3_icon":"shield","feature_3_title":"Dermatologisch getestet","feature_3_description":"Klinisch geprüft und für alle Hauttypen geeignet","feature_4_icon":"star","feature_4_title":"Anti-Aging Wirkung","feature_4_description":"Reduziert sichtbar Falten und feine Linien","feature_5_icon":"heart","feature_5_title":"Sanfte Formel","feature_5_description":"Ohne Parabene, Silikone und Mikroplastik","feature_6_icon":"sparkles","feature_6_title":"Sichtbare Ergebnisse","feature_6_description":"Erste Verbesserungen bereits nach 7 Tagen","icon_color":"#c9ad95","text_color":"#000000","icon_size":40,"title_size":16,"description_size":14,"desktop_width_percent":100},"blocks":{}}},"block_order":["ai_gen_block_0e6b605_kxh3NY"],"disabled":true,"name":"Product Highlights","settings":{}},"faq_NywRLC":{"type":"faq","blocks":{"question_RUeTiq":{"type":"question","settings":{"title":"Sind eure Produkte für alle Hauttypen ?","text":"<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"}},"question_j9wCqP":{"type":"question","settings":{"title":"Werden eure Produkte auf Qualität geprüft","text":"<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"}}},"block_order":["question_RUeTiq","question_j9wCqP"],"disabled":true,"name":"FAQ","settings":{"title":"FAQs"}},"1786995557570165de":{"type":"_blocks","blocks":{"ai_gen_block_06e1672_4TNXKm":{"type":"ai_gen_block_06e1672","settings":{"heading":"Das spricht für uns","heading_size":32,"heading_spacing":30,"heading_color":"#000000","brand_name":"MK Beauty Cosmetics","vs_text":"VS","competitor_name":"ANDERE","header_font_size":18,"vs_font_size":14,"feature_1":"Für alle Hauttypen","feature_2":"Natürliche Inhaltsstoffe","feature_3":"Dermatologisch getestet","feature_4":"Made in Germany","feature_font_size":15,"icon_size":20,"icon_text_gap":8,"check_color":"#22c55e","cross_color":"#ef4444","background_color":"#ffffff","text_color":"#000000","brand_color":"#000000","competitor_color":"#000000","vs_color":"#999999","border_color":"#e5e5e5","desktop_width_percent":100,"table_max_width":800,"section_padding":40,"row_padding":16,"row_spacing":10,"column_gap":20,"vs_column_width":120,"vs_padding":10,"border_width":1},"blocks":{}}},"block_order":["ai_gen_block_06e1672_4TNXKm"],"name":"Vergleichstabelle","settings":{}},"recommendations":{"type":"product-recommendations","settings":{"product_recommendations_heading":"You may also like"}},"more-products-vendor":{"type":"more-products-vendor","settings":{}},"more-products-collection":{"type":"more-products-collection","settings":{}},"recently-viewed":{"type":"recently-viewed","settings":{}},"collection-return":{"type":"collection-return","settings":{"color_scheme":"2"}}},"order":["main","sub","17838566065fbfef1d","1783857243f2fe7617","faq_NywRLC","1786995557570165de","recommendations","more-products-vendor","more-products-collection","recently-viewed","collection-return"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_ctLdWw": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h1"
+          }
+        },
+        "text_3d7LUB": {
+          "type": "text",
+          "name": "Subtitle",
+          "settings": {
+            "text": "{{ product.metafields.custom.subtitle.value }}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "product_benefits_amjetK": {
+          "type": "product-benefits",
+          "name": "Product Benefits (USP_1)",
+          "settings": {
+            "usp_icon": "shopify://shop_images/usp.icon.svg",
+            "usp_text": "{{ product.metafields.custom.usp_1.value }}",
+            "icon_size": 22,
+            "space_between": 0,
+            "text_color": "#000000",
+            "font_size": 15
+          }
+        },
+        "product_benefits_ai3CBw": {
+          "type": "product-benefits",
+          "name": "Product Benefits (USP_2)",
+          "settings": {
+            "usp_icon": "shopify://shop_images/usp.icon.svg",
+            "usp_text": "{{ product.metafields.custom.usp_2.value }}",
+            "icon_size": 22,
+            "space_between": 0,
+            "text_color": "#000000",
+            "font_size": 15
+          }
+        },
+        "product_benefits_FH7Xa6": {
+          "type": "product-benefits",
+          "name": "Product Benefits (USP_3)",
+          "settings": {
+            "usp_icon": "shopify://shop_images/usp.icon.svg",
+            "usp_text": "{{ product.metafields.custom.usp_3.value }}",
+            "icon_size": 22,
+            "space_between": 0,
+            "text_color": "#000000",
+            "font_size": 15
+          }
+        },
+        "product_benefits_jHhmxE": {
+          "type": "product-benefits",
+          "name": "Product Benefits (USP_4)",
+          "settings": {
+            "usp_icon": "shopify://shop_images/usp.icon.svg",
+            "usp_text": "{{ product.metafields.custom.usp_4.value }}",
+            "icon_size": 22,
+            "space_between": 0,
+            "text_color": "#000000",
+            "font_size": 15
+          }
+        },
+        "product_benefits_Rxz8pg": {
+          "type": "product-benefits",
+          "name": "Product Benefits (USP_5)",
+          "settings": {
+            "usp_icon": "shopify://shop_images/usp.icon.svg",
+            "usp_text": "{{ product.metafields.custom.usp_5.value }}",
+            "icon_size": 22,
+            "space_between": 0,
+            "text_color": "#000000",
+            "font_size": 15
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "color_swatches": false
+          }
+        },
+        "custom_jVNfkh": {
+          "type": "custom",
+          "name": "Delivery",
+          "settings": {
+            "code": "<style>\n  .delivery-badge {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n    margin: 20px 0;\n    font-size: 16px;\n    font-weight: 500;\n    color: #C9AD95;\n  }\n\n  .delivery-dot-outer {\n    width: 16px;\n    height: 16px;\n    background-color: #E8E8E1;\n    border-radius: 50%;\n    flex-shrink: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .delivery-dot-inner {\n    width: 10px;\n    height: 10px;\n    background-color: #C9AD95;\n    border-radius: 50%;\n  }\n</style>\n\n<div class=\"delivery-badge\">\n  <div class=\"delivery-dot-outer\">\n    <div class=\"delivery-dot-inner\"></div>\n  </div>\n  <span> In 1–3 Werktagen schon bei dir </span>\n</div>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "surface_pickup_enable": false
+          }
+        },
+        "tab_xnJytG": {
+          "type": "tab",
+          "settings": {
+            "title": "Beschreibung",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "tab_4HB3aa": {
+          "type": "tab",
+          "settings": {
+            "title": "Inhaltsstoffe",
+            "content": "<p>{{ product.metafields.custom.inhaltsstoffe | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "tab_hddr6V": {
+          "type": "tab",
+          "settings": {
+            "title": "Anwendung",
+            "content": "<p>{{ product.metafields.custom.anwendung | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "tab_hHrqaa": {
+          "type": "tab",
+          "settings": {
+            "title": "Lieferung",
+            "content": "<p>Die Lieferung dauert max. 2-4 Werktage ab Bestelldatum. Sobald dein Paket versandt wurde, erhältst du eine E-Mail mit allen relevanten Tracking-Details. Wir akzeptieren Rücksendungen innerhalb von 14 Tagen nach dem Kauf</p>",
+            "page": ""
+          }
+        },
+        "tab_xCFwwf": {
+          "type": "tab",
+          "settings": {
+            "title": "Informationen",
+            "content": "<p>{{ product.metafields.custom.hersteller | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "contact_Lzbkfi": {
+          "type": "contact",
+          "settings": {
+            "title": "Haben Sie Fragen?",
+            "phone": false
+          }
+        }
+      },
+      "block_order": [
+        "title_ctLdWw",
+        "text_3d7LUB",
+        "price",
+        "product_benefits_amjetK",
+        "product_benefits_ai3CBw",
+        "product_benefits_FH7Xa6",
+        "product_benefits_jHhmxE",
+        "product_benefits_Rxz8pg",
+        "variant_picker",
+        "custom_jVNfkh",
+        "buy_buttons",
+        "tab_xnJytG",
+        "tab_4HB3aa",
+        "tab_hddr6V",
+        "tab_hHrqaa",
+        "tab_xCFwwf",
+        "contact_Lzbkfi"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_container_size": "small",
+        "product_image_size": "square",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "sub": {
+      "type": "product-full-width",
+      "disabled": true,
+      "settings": {}
+    },
+    "17838566065fbfef1d": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e38fb13_bwfBtq": {
+          "type": "ai_gen_block_e38fb13",
+          "disabled": true,
+          "settings": {
+            "heading": "Kennst du das?",
+            "heading_size": 36,
+            "heading_color": "#000000",
+            "heading_spacing": 50,
+            "problem_1_icon": "wrinkles",
+            "problem_1_title": "Falten & feine Linien",
+            "problem_1_description": "Sichtbare Zeichen der Hautalterung, die dich älter aussehen lassen.",
+            "problem_2_icon": "dryness",
+            "problem_2_title": "Trockene Haut",
+            "problem_2_description": "Mangelnde Feuchtigkeit führt zu Spannungsgefühl und rauer Textur.",
+            "problem_3_icon": "dullness",
+            "problem_3_title": "Fahler Teint",
+            "problem_3_description": "Müde aussehende Haut ohne natürliche Ausstrahlung und Frische.",
+            "icon_size": 60,
+            "icon_color": "#c9ad95",
+            "icon_spacing": 20,
+            "title_size": 18,
+            "title_color": "#000000",
+            "title_spacing": 12,
+            "description_size": 14,
+            "description_color": "#666666",
+            "max_width": 1200,
+            "column_gap": 40,
+            "section_padding": 80,
+            "background_color": "#ffffff",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e38fb13_bwfBtq"
+      ],
+      "name": "Identifkation",
+      "settings": {}
+    },
+    "1783857243f2fe7617": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_0e6b605_kxh3NY": {
+          "type": "ai_gen_block_0e6b605",
+          "settings": {
+            "product_image": "{{ closest.product.featured_image }}",
+            "image_size": 400,
+            "image_border_radius": 8,
+            "feature_1_icon": "leaf",
+            "feature_1_title": "Natürliche Inhaltsstoffe",
+            "feature_1_description": "100% pflanzliche Wirkstoffe für sanfte Pflege",
+            "feature_2_icon": "droplet",
+            "feature_2_title": "Intensive Feuchtigkeit",
+            "feature_2_description": "Tiefenwirksame Hydration für 24 Stunden",
+            "feature_3_icon": "shield",
+            "feature_3_title": "Dermatologisch getestet",
+            "feature_3_description": "Klinisch geprüft und für alle Hauttypen geeignet",
+            "feature_4_icon": "star",
+            "feature_4_title": "Anti-Aging Wirkung",
+            "feature_4_description": "Reduziert sichtbar Falten und feine Linien",
+            "feature_5_icon": "heart",
+            "feature_5_title": "Sanfte Formel",
+            "feature_5_description": "Ohne Parabene, Silikone und Mikroplastik",
+            "feature_6_icon": "sparkles",
+            "feature_6_title": "Sichtbare Ergebnisse",
+            "feature_6_description": "Erste Verbesserungen bereits nach 7 Tagen",
+            "icon_color": "#c9ad95",
+            "text_color": "#000000",
+            "icon_size": 40,
+            "title_size": 16,
+            "description_size": 14,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_0e6b605_kxh3NY"
+      ],
+      "disabled": true,
+      "name": "Product Highlights",
+      "settings": {}
+    },
+    "faq_NywRLC": {
+      "type": "faq",
+      "blocks": {
+        "question_pA9waj": {
+          "type": "question",
+          "settings": {
+            "title": "Sind eure Produkte Vegan ?",
+            "text": "<p>Ja, absolut! Alle unsere Produkte sind zu <strong>100 % vegan.</strong> Wir verzichten komplett auf tierische Inhaltsstoffe und achten auch bei der Herstellung auf tierleidfreie Alternativen.</p>"
+          }
+        },
+        "question_QLXLn9": {
+          "type": "question",
+          "settings": {
+            "title": "Sind eure Produkte dermatolisch getestet ?",
+            "text": "<p><strong>Ja</strong>, unsere Produkte sind <strong>alle dermatologisch getestet. </strong>Die Hautverträglichkeit wurde in unabhängigen Tests sorgfältig geprüft und bestätigt, sodass du sie auch bei empfindlicher Haut bedenkenlos anwenden kannst.</p>"
+          }
+        },
+        "question_RUeTiq": {
+          "type": "question",
+          "settings": {
+            "title": "Sind eure Produkte für alle Hauttypen ?",
+            "text": "<p>Ja, unsere Produkte wurden so formuliert, dass sie für <strong>alle Hauttypen geeignet</strong> sind – von trockener über ölige bis hin zu empfindlicher Haut. Wir setzen auf sanfte, gut verträgliche Inhaltsstoffe, die die natürliche Hautbarriere unterstützen.</p><p></p>"
+          }
+        },
+        "question_j9wCqP": {
+          "type": "question",
+          "settings": {
+            "title": "Werden eure Produkte auf Qualität geprüft ?",
+            "text": "<p>Ja, Qualität hat bei uns höchste Priorität. Jedes unserer Produkte durchläuft <strong>während und nach</strong> der Herstellung <strong>strenge</strong> <strong>Qualitätskontrollen</strong> sowie mikrobiologische Tests. So stellen wir sicher, dass nur einwandfreie und hochwertige Produkte bei dir ankommen.</p>"
+          }
+        },
+        "question_xYcpa7": {
+          "type": "question",
+          "settings": {
+            "title": "Sind diese Produkte Tierversuchsfrei ?",
+            "text": "<p>Ja, garantiert! <strong>Wir lehnen Tierversuche konsequent ab.</strong> Weder unsere fertigen Produkte noch die einzelnen Inhaltsstoffe werden an Tieren getestet – weder von uns noch von Dritten. <strong>Tierwohl steht bei uns an oberster Stelle.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_pA9waj",
+        "question_QLXLn9",
+        "question_RUeTiq",
+        "question_j9wCqP",
+        "question_xYcpa7"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "1786995557570165de": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_06e1672_4TNXKm": {
+          "type": "ai_gen_block_06e1672",
+          "settings": {
+            "heading": "Das spricht für uns",
+            "heading_size": 32,
+            "heading_spacing": 30,
+            "heading_color": "#000000",
+            "brand_name": "MK Beauty Cosmetics",
+            "vs_text": "VS",
+            "competitor_name": "ANDERE",
+            "header_font_size": 18,
+            "vs_font_size": 14,
+            "feature_1": "Für alle Hauttypen",
+            "feature_2": "Natürliche Inhaltsstoffe",
+            "feature_3": "Dermatologisch getestet",
+            "feature_4": "Made in Germany",
+            "feature_font_size": 15,
+            "icon_size": 20,
+            "icon_text_gap": 8,
+            "check_color": "#22c55e",
+            "cross_color": "#ef4444",
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "brand_color": "#000000",
+            "competitor_color": "#000000",
+            "vs_color": "#999999",
+            "border_color": "#e5e5e5",
+            "desktop_width_percent": 100,
+            "table_max_width": 800,
+            "section_padding": 40,
+            "row_padding": 16,
+            "row_spacing": 10,
+            "column_gap": 20,
+            "vs_column_width": 120,
+            "vs_padding": 10,
+            "border_width": 1
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_06e1672_4TNXKm"
+      ],
+      "name": "Vergleichstabelle",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_recommendations_heading": "You may also like"
+      }
+    },
+    "more-products-vendor": {
+      "type": "more-products-vendor",
+      "settings": {}
+    },
+    "more-products-collection": {
+      "type": "more-products-collection",
+      "settings": {}
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "settings": {
+        "color_scheme": "2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sub",
+    "17838566065fbfef1d",
+    "1783857243f2fe7617",
+    "faq_NywRLC",
+    "1786995557570165de",
+    "recommendations",
+    "more-products-vendor",
+    "more-products-collection",
+    "recently-viewed",
+    "collection-return"
+  ]
+}
