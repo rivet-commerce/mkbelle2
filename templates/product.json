@@ -332,12 +332,6 @@
       "name": "Vergleichstabelle",
       "settings": {}
     },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "product_recommendations_heading": "You may also like"
-      }
-    },
     "more-products-vendor": {
       "type": "more-products-vendor",
       "disabled": true,
@@ -411,6 +405,12 @@
         "title": "FAQs"
       }
     },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_recommendations_heading": "You may also like"
+      }
+    },
     "collection-return": {
       "type": "collection-return",
       "settings": {
@@ -424,11 +424,11 @@
     "17838566065fbfef1d",
     "1783857243f2fe7617",
     "1786995557570165de",
-    "recommendations",
     "more-products-vendor",
     "more-products-collection",
     "recently-viewed",
     "faq_NywRLC",
+    "recommendations",
     "collection-return"
   ]
 }
