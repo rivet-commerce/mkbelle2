@@ -399,7 +399,7 @@
   "customer_accounts": {
     "sign_in": {
       "step_one": {
-        "consent_agreement": "Mit deiner Anmeldung akzeptierst du unsere {{terms}}"
+        "consent_agreement": "Mit der Anmeldung akzeptierst du unsere {{terms}}"
       }
     }
   }
