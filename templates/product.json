@@ -247,20 +247,6 @@
       "name": "Identifkation",
       "settings": {}
     },
-    "more-products-vendor": {
-      "type": "more-products-vendor",
-      "disabled": true,
-      "settings": {}
-    },
-    "more-products-collection": {
-      "type": "more-products-collection",
-      "disabled": true,
-      "settings": {}
-    },
-    "recently-viewed": {
-      "type": "recently-viewed",
-      "settings": {}
-    },
     "178708450040b2e2d6": {
       "type": "_blocks",
       "blocks": {
@@ -547,11 +533,26 @@
       "name": "Product Highlights",
       "settings": {}
     },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    },
     "recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "product_recommendations_heading": "You may also like"
       }
+    },
+    "more-products-vendor": {
+      "type": "more-products-vendor",
+      "disabled": true,
+      "settings": {}
+    },
+    "more-products-collection": {
+      "type": "more-products-collection",
+      "disabled": true,
+      "settings": {}
     },
     "collection-return": {
       "type": "collection-return",
@@ -564,13 +565,13 @@
     "main",
     "sub",
     "17838566065fbfef1d",
-    "recently-viewed",
     "178708450040b2e2d6",
     "17872535448b98bc3a",
     "178725584709355591",
     "blocks_XKFMp9",
     "faq_NywRLC",
     "1783857243f2fe7617",
+    "recently-viewed",
     "recommendations",
     "more-products-vendor",
     "more-products-collection",
