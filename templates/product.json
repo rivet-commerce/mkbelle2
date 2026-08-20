@@ -356,6 +356,7 @@
       "blocks": {
         "ai_gen_block_5969828_gcFJNt": {
           "type": "ai_gen_block_5969828",
+          "disabled": true,
           "settings": {
             "background_color": "#f5f5f5",
             "text_color": "#000000",
