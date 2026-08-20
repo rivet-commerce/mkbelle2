@@ -360,7 +360,7 @@
           "settings": {
             "background_color": "#f5f5f5",
             "text_color": "#000000",
-            "icon_color": "#C9AD95",
+            "icon_color": "#c9ad95",
             "padding_vertical": 20,
             "item_spacing": 40,
             "icon_size": 40,
@@ -489,6 +489,48 @@
         "title": "FAQs"
       }
     },
+    "178725584709355591": {
+      "type": "apps",
+      "blocks": {
+        "reviews_io_reviewsio_polaris_wpiWKm": {
+          "type": "shopify://apps/reviews-io/blocks/reviewsio-polaris/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "settings": {
+            "star": "#C9AD95",
+            "review_type": "product_review",
+            "per_page": 8,
+            "primary_btn_bg_color": "#C9AD95",
+            "primary_btn_border_color": "#C9AD95",
+            "primary_btn_text_color": "#FFFFFF",
+            "secondary_btn_border_color": "#000",
+            "secondary_btn_text_color": "#000",
+            "border_color": "#D9D9D9",
+            "heading_text_color": "#000",
+            "heading_font": "poppins_n4",
+            "body_text_color": "#000",
+            "badge_icon_color": "#C9AD95",
+            "badge_text_color": "#C9AD95",
+            "enable_rich_snippets": true,
+            "show_location": false,
+            "show_tab_selector": false,
+            "show_dates": false,
+            "show_avatar": true,
+            "enable_sentiment_analysis": false,
+            "enable_replies": false,
+            "widget_spacing": 0,
+            "capitalise_headers_and_buttons": false,
+            "show_review_title": false,
+            "default_sort": "highest_rating"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_io_reviewsio_polaris_wpiWKm"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -513,6 +555,7 @@
     "178708450040b2e2d6",
     "17872535448b98bc3a",
     "faq_NywRLC",
+    "178725584709355591",
     "recommendations",
     "collection-return"
   ]
