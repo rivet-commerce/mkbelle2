@@ -395,5 +395,12 @@
         "accept_marketing_checkbox_label": "Infos, Neuigkeiten & Angebote via E-Mail erhalten"
       }
     }
+  },
+  "customer_accounts": {
+    "sign_in": {
+      "step_one": {
+        "consent_agreement": "Mit deiner Anmeldung akzeptierst du unsere {{terms}}"
+      }
+    }
   }
 }
