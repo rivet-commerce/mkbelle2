@@ -450,6 +450,43 @@
         "title": "FAQs"
       }
     },
+    "17872535448b98bc3a": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5969828_gcFJNt": {
+          "type": "ai_gen_block_5969828",
+          "settings": {
+            "background_color": "#f5f5f5",
+            "text_color": "#000000",
+            "icon_color": "#C9AD95",
+            "padding_vertical": 20,
+            "item_spacing": 40,
+            "icon_size": 40,
+            "icon_stroke_width": 1.5,
+            "icon_text_gap": 15,
+            "title_size": 14,
+            "subtitle_size": 11,
+            "benefit_1_enabled": true,
+            "benefit_1_icon": "vegan",
+            "benefit_1_title": "Vegan",
+            "benefit_1_subtitle": "",
+            "benefit_2_enabled": true,
+            "benefit_2_icon": "derma",
+            "benefit_2_title": "Dermatologisch getestet",
+            "benefit_2_subtitle": "",
+            "benefit_3_enabled": true,
+            "benefit_3_icon": "cruelty-free",
+            "benefit_3_title": "Tierversuchsfrei",
+            "benefit_3_subtitle": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5969828_gcFJNt"
+      ],
+      "settings": {}
+    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -473,6 +510,7 @@
     "178708450040b2e2d6",
     "recently-viewed",
     "faq_NywRLC",
+    "17872535448b98bc3a",
     "recommendations",
     "collection-return"
   ]
