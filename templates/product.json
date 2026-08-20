@@ -12,6 +12,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "reviews_io_reviewsio_rating_bar_napWcy": {
+          "type": "shopify://apps/reviews-io/blocks/reviewsio-rating-bar/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "disabled": true,
+          "settings": {
+            "widget_id": ""
+          }
+        },
         "title_ctLdWw": {
           "type": "title",
           "settings": {
@@ -160,6 +167,7 @@
         }
       },
       "block_order": [
+        "reviews_io_reviewsio_rating_bar_napWcy",
         "title_ctLdWw",
         "text_3d7LUB",
         "price",
