@@ -12,9 +12,129 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "1787398197e72cbb89": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1bbf458_cgrFzY": {
+          "type": "ai_gen_block_1bbf458",
+          "settings": {
+            "heading": "Dauerhafte Haarentfernung – Services",
+            "heading_alignment": "left",
+            "heading_color": "#333333",
+            "service_header": "Service",
+            "duration_header": "Dauer",
+            "header_text_color": "#333333",
+            "service_1": "Achseln",
+            "duration_1": "30 min",
+            "service_2": "Arme",
+            "duration_2": "30 min",
+            "service_3": "Arme halb",
+            "duration_3": "30 min",
+            "service_4": "Bauch",
+            "duration_4": "30 min",
+            "service_5": "Beine komplett",
+            "duration_5": "45 min",
+            "service_6": "Bikini",
+            "duration_6": "45 min",
+            "service_7": "Brust",
+            "duration_7": "30 min",
+            "service_8": "Halber Rücken",
+            "duration_8": "30 min",
+            "service_9": "Intim / Achseln",
+            "duration_9": "45 min",
+            "service_10": "Intim komplett",
+            "duration_10": "60 min",
+            "service_11": "Oberlippe & Kinn",
+            "duration_11": "30 min",
+            "service_12": "Oberschenkel",
+            "duration_12": "45 min",
+            "service_13": "Rücken",
+            "duration_13": "45 min",
+            "service_14": "Schultern",
+            "duration_14": "30 min",
+            "service_15": "Beine",
+            "duration_15": "30 min",
+            "service_16": "halbe Beine",
+            "duration_16": "45 min",
+            "service_17": "Ganzkörper",
+            "duration_17": "105 min",
+            "service_18": "",
+            "duration_18": "",
+            "service_19": "",
+            "duration_19": "",
+            "service_20": "",
+            "duration_20": "",
+            "button_text": "Termin buchen",
+            "button_link": "",
+            "button_aria_label": "Termin buchen",
+            "button_color": "#C9AD95",
+            "button_hover_color": "#C9AD95",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 4,
+            "background_color": "#ffffff",
+            "service_text_color": "#000000",
+            "duration_color": "#000000",
+            "border_color": "#C9AD95",
+            "card_background_color": "#C9AD95",
+            "desktop_width_percent": 100,
+            "border_radius": 8,
+            "card_border_radius": 8
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1bbf458_cgrFzY"
+      ],
+      "settings": {}
+    },
+    "faq_xkCnt6": {
+      "type": "faq",
+      "blocks": {
+        "question_aQMPef": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question_kUnqjA": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_aQMPef",
+        "question_kUnqjA"
+      ],
+      "disabled": true,
+      "name": "FAQ",
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "map_MRHNFi": {
+      "type": "map",
+      "disabled": true,
+      "name": "Map",
+      "settings": {
+        "map_title": "Our retail store",
+        "address": "<p>301 Front St W<br/>Toronto, Canada</p><p>Mon - Fri, 8:30am - 10:30pm<br/>Saturday, 8:30am - 10:30pm<br/>Sunday, 8:30am - 10:30pm</p>",
+        "map_address": "301 Front St W, Toronto, ON M5V 2T6",
+        "api_key": "",
+        "show_button": true,
+        "background_image_position": "center center"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "1787398197e72cbb89",
+    "faq_xkCnt6",
+    "map_MRHNFi"
   ]
 }
