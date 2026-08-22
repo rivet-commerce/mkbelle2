@@ -100,11 +100,80 @@
         "narrow_column": true,
         "color_scheme": "1"
       }
+    },
+    "blocks_36w6CR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1cc740b_dWrXjz": {
+          "type": "ai_gen_block_1cc740b",
+          "settings": {
+            "heading": "",
+            "heading_size": 36,
+            "heading_color": "#000000",
+            "heading_alignment": "center",
+            "heading_spacing": 40,
+            "desktop_width_percent": 100,
+            "section_padding": 50,
+            "grid_gap": 30,
+            "background_color": "#ffffff",
+            "card_background": "#f9f9f9",
+            "card_padding": 30,
+            "card_border_radius": 12,
+            "card_border_width": 1,
+            "card_border_color": "#e8e8e1",
+            "icon_size": 80,
+            "icon_background": "#C9AD95",
+            "icon_color": "#ffffff",
+            "icon_spacing": 20,
+            "title_size": 20,
+            "title_color": "#000000",
+            "title_spacing": 12,
+            "description_size": 15,
+            "description_color": "#666666",
+            "service_1_enabled": true,
+            "service_1_icon": "shopify://shop_images/icons8-hair-follicle-48.png",
+            "service_1_title": "Dauerhafte Haarentfernung",
+            "service_1_description": "Mit modernem Diodenlaser 808pro",
+            "service_1_link": "shopify://pages/dauerhafte-haarentfernung",
+            "service_2_enabled": true,
+            "service_2_icon": "shopify://shop_images/icons8-needle-50.png",
+            "service_2_title": "Microneedling",
+            "service_2_description": "Behandlungen für Narben & Hautverbesserung",
+            "service_2_link": "shopify://pages/microneedling",
+            "service_3_enabled": true,
+            "service_3_icon": "shopify://shop_images/icons8-woman-head-50.png",
+            "service_3_title": "Gesichtsbehandlungen",
+            "service_3_description": "Facials für jeden Hauttyp",
+            "service_3_link": "shopify://pages/facials-gesichtsbehandlung",
+            "service_4_enabled": true,
+            "service_4_icon": "shopify://shop_images/icons8-makeup-brush-50.png",
+            "service_4_title": "Make-up & Styling",
+            "service_4_description": "Professionelle Make-up Services",
+            "service_4_link": "shopify://pages/make-up-schminken",
+            "service_5_enabled": true,
+            "service_5_icon": "shopify://shop_images/icons8-pretty-woman-50.png",
+            "service_5_title": "Permanent Make-up",
+            "service_5_description": "Langfristige Schönheitsbehandlungen",
+            "service_5_link": "shopify://pages/permanent-make-up",
+            "service_6_enabled": true,
+            "service_6_icon": "shopify://shop_images/icons8-eyelashes-2d-50.png",
+            "service_6_title": "Wimpern & Augenbrauen",
+            "service_6_description": "Styling & Pflege für Wimpern und Brauen",
+            "service_6_link": "shopify://pages/lashes-brows-wimpern"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1cc740b_dWrXjz"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "main",
     "blocks_JkJFFH",
-    "contact_form_rzwaRp"
+    "contact_form_rzwaRp",
+    "blocks_36w6CR"
   ]
 }
