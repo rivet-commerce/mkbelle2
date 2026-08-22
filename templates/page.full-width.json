@@ -137,12 +137,14 @@
         },
         "16361992833fc038d9-0": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "title": "BODY | Mittels Diodenlaser 808pro"
           }
         },
         "16361992833fc038d9-1": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "enlarge_text": true,
             "text": "<p><strong>DAUERHAFTE HAARENTFERNUNG<br/></strong></p><p>Achseln – 30 min   |||   Arme – 30 min    |||   Arme halb – 30 min    |||   Bauch – 30 min    |||   Beine komplett – 45 min    </p><p>Bikini – 30 min    |||   Brust – 30 min    |||   Halber Rücken – 30 min    |||   Intim / Achseln – 45 min    |||   Intim komplett – 60 min</p><p>Oberlippe & Kinn – 30 min    |||   Oberschenkel – 45 min    |||   Rücken – 45 min    |||   Schultern – 30 min </p><p>Beine – 30 min    |||   halbe Beine – 45 min    |||   Ganzkörper – 105 min</p><p><br/><strong>MICRONEEDLING</strong><br/>Behandlung von Narben – 75 min    |||   Behandlung Pigmentflecken – 15 min    |||   Dehnungsstreifen Behandlung – 75 min</p><p></p>"
@@ -150,12 +152,14 @@
         },
         "ddfb15ba-a460-41ce-8036-bea572bcf2f9": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "title": "FACIALS | Gesichtsbehandlung"
           }
         },
         "747028d5-e3c7-45b7-81f9-3868c62a27bc": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "enlarge_text": true,
             "text": "<p>Aquafacial – 130 min    |||   Aquafacial & Microneedling – 75 min    |||    Akne  – 90 min    |||   Anti-Aging – 90 min</p><p>Microneedling – 75 min    |||  Microneedling & BB Glow – 90 min</p><p></p>"
@@ -163,12 +167,14 @@
         },
         "9fa0f1cd-7d2d-4a63-9817-bf272562407f": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "title": "MAKE-UP | Schminken"
           }
         },
         "c5901c49-644d-4fb8-a207-2d31947efa30": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "enlarge_text": true,
             "text": "<p>Tages Make-up – 75 min    |||   Abend Make-up – 60 min</p><p>Braut Make-up – 90 min    |||   Braut Make-up inkl. Probe – 150 min</p><p>Make-up Kurs – 165 min  </p><p>Mikropigmentierung Allergietest – 30 min</p><p><br/><strong>PERMANENT MAKE-UP<br/></strong>Aquarell Lippen – 135 min    |||   Augenbrauen Nachbehandlung – 150 min</p><p>Lippen Nachbehandlung –150 min    |||   Lippenschattierung – 165 min</p><p>Ombré Powder Brows – 165 min</p><p>Tattoo Entfernung – 75 min</p><p><br/></p>"
@@ -176,12 +182,14 @@
         },
         "0884e2e0-f919-438b-93dd-cb519e4ad831": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "title": "LASHES & BROWS | Wimpern"
           }
         },
         "d6fad597-f46d-4fab-ba45-ecebba4ba175": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "enlarge_text": true,
             "text": "<p>Wimpern / Augenbrauen färben – 30  min    |||   Wimpern & Augenbrauen färben – 30 min</p><p>Wimpernlifting – 75 min    |||   Browlamination – 75 min  </p><p><br/><strong>WIMPERNVERLÄNGERUNG</strong><br/>Vorherige entfernen – 30 min    |||   1:1 Technik auffüllen – 135 min</p><p>  &gt; nach 2 Wochen erneuern – 105 min    |||   &gt; nach 3 Wochen erneuern – 105 min</p><p></p><p>Wimpernverlängerung Volumen – 165 min</p><p>&gt; nach 2 Wochen auffüllen – 165 min    |||   &gt; nach 3 Wochen auffüllen – 165 min </p><p></p><p>Wimpernverlängerung mit Mascara-Effekt – 165 min </p><p>&gt; nach 2 Wochen auffüllen – 165 min    |||   &gt; nach 3 Wochen auffüllen – 165 min</p><p></p>"
@@ -212,12 +220,24 @@
       "type": "main-page-full-width",
       "disabled": true,
       "settings": {}
+    },
+    "contact_form_bNJmyx": {
+      "type": "contact-form",
+      "name": "Contact form",
+      "settings": {
+        "title": "Anfrage",
+        "text": "",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "1"
+      }
     }
   },
   "order": [
     "1636201901cb7444da",
     "178739623023b0c35e",
     "16361992833fc038d9",
-    "main"
+    "main",
+    "contact_form_bNJmyx"
   ]
 }
