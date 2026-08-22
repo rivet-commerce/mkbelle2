@@ -79,6 +79,7 @@
             "service_1_description": "Mit modernem Diodenlaser 808pro",
             "service_1_link": "shopify://pages/dauerhafte-haarentfernung",
             "service_2_enabled": true,
+            "service_2_icon": "shopify://shop_images/icons8-needle-50.png",
             "service_2_title": "Microneedling",
             "service_2_description": "Behandlungen für Narben & Hautverbesserung",
             "service_2_link": "shopify://pages/microneedling",
