@@ -66,7 +66,7 @@
             "service_20": "",
             "duration_20": "",
             "button_text": "Termin buchen",
-            "button_link": "",
+            "button_link": "https://www.treatwell.de/ort/mk-beauty-ruettenscheid/",
             "button_aria_label": "Termin buchen",
             "button_color": "#C9AD95",
             "button_hover_color": "#C9AD95",
