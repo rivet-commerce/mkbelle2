@@ -75,7 +75,7 @@
             "background_color": "#ffffff",
             "service_text_color": "#000000",
             "duration_color": "#000000",
-            "border_color": "#C9AD95",
+            "border_color": "rgba(0,0,0,0)",
             "card_background_color": "#C9AD95",
             "desktop_width_percent": 100,
             "border_radius": 8,
@@ -117,25 +117,11 @@
       "settings": {
         "title": "FAQs"
       }
-    },
-    "map_MRHNFi": {
-      "type": "map",
-      "disabled": true,
-      "name": "Map",
-      "settings": {
-        "map_title": "Our retail store",
-        "address": "<p>301 Front St W<br/>Toronto, Canada</p><p>Mon - Fri, 8:30am - 10:30pm<br/>Saturday, 8:30am - 10:30pm<br/>Sunday, 8:30am - 10:30pm</p>",
-        "map_address": "301 Front St W, Toronto, ON M5V 2T6",
-        "api_key": "",
-        "show_button": true,
-        "background_image_position": "center center"
-      }
     }
   },
   "order": [
     "main",
     "1787398197e72cbb89",
-    "faq_xkCnt6",
-    "map_MRHNFi"
+    "faq_xkCnt6"
   ]
 }
