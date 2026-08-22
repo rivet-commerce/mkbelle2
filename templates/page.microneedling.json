@@ -89,10 +89,22 @@
       ],
       "name": "Services table",
       "settings": {}
+    },
+    "contact_form_UWwdwt": {
+      "type": "contact-form",
+      "name": "Contact form",
+      "settings": {
+        "title": "Contact us",
+        "text": "",
+        "show_phone": false,
+        "narrow_column": true,
+        "color_scheme": "1"
+      }
     }
   },
   "order": [
     "main",
-    "blocks_FR4NNj"
+    "blocks_FR4NNj",
+    "contact_form_UWwdwt"
   ]
 }
