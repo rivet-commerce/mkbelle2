@@ -1,6 +1,655 @@
+{% doc %}
+  @prompt
+    baue eine section in der ich fotos von kunden ergebnissen also fotos einfügen kann 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-customer-results-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding }}px 0;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-customer-results__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-customer-results__header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: {{ block.settings.spacing_below_heading }}px;
+  }
+
+  .ai-customer-results__title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.spacing_below_heading | divided_by: 2 }}px;
+    letter-spacing: 0.05em;
+  }
+
+  .ai-customer-results__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.subheading_color }};
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .ai-customer-results__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ai-customer-results__item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    background-color: {{ block.settings.image_background }};
+  }
+
+  .ai-customer-results__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: {{ block.settings.image_aspect_ratio }}%;
+    overflow: hidden;
+  }
+
+  .ai-customer-results__image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-customer-results__item-{{ ai_gen_id }}:hover .ai-customer-results__image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-customer-results__placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-customer-results__placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-customer-results__caption-{{ ai_gen_id }} {
+    padding: {{ block.settings.caption_padding }}px;
+    text-align: center;
+    font-size: {{ block.settings.caption_size }}px;
+    color: {{ block.settings.caption_color }};
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-customer-results__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+
+    .ai-customer-results__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-customer-results__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-customer-results__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.7);
+    }
+
+    .ai-customer-results__subtitle-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheading_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<customer-results-{{ ai_gen_id }} class="ai-customer-results-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-customer-results__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank or block.settings.subheading != blank %}
+      <div class="ai-customer-results__header-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-customer-results__title-{{ ai_gen_id }}">
+            {{ block.settings.heading }}
+          </h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <div class="ai-customer-results__subtitle-{{ ai_gen_id }}">
+            {{ block.settings.subheading }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <ul class="ai-customer-results__grid-{{ ai_gen_id }}">
+      {% for i in (1..12) %}
+        {% liquid
+          assign image_key = 'image_' | append: i
+          assign caption_key = 'caption_' | append: i
+          assign image = block.settings[image_key]
+          assign caption = block.settings[caption_key]
+        %}
+
+        {% if image != blank or forloop.index <= 6 %}
+          <li class="ai-customer-results__item-{{ ai_gen_id }}">
+            <div class="ai-customer-results__image-wrapper-{{ ai_gen_id }}">
+              {% if image != blank %}
+                <img
+                  src="{{ image | image_url: width: 800 }}"
+                  alt="{{ caption | default: image.alt | escape }}"
+                  class="ai-customer-results__image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                >
+              {% else %}
+                <div class="ai-customer-results__placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            {% if caption != blank %}
+              <div class="ai-customer-results__caption-{{ ai_gen_id }}">
+                {{ caption }}
+              </div>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</customer-results-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomerResults{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.initLazyLoading();
+      }
+
+      initLazyLoading() {
+        if ('IntersectionObserver' in window) {
+          const images = this.querySelectorAll('.ai-customer-results__image-{{ ai_gen_id }}');
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+                
+                if (img.complete) {
+                  img.style.opacity = '1';
+                } else {
+                  img.addEventListener('load', () => {
+                    img.style.opacity = '1';
+                  });
+                }
+                
+                observer.unobserve(img);
+              }
+            });
+          });
+
+          images.forEach(img => imageObserver.observe(img));
+        }
+      }
+    }
+
+    customElements.define('customer-results-{{ ai_gen_id }}', CustomerResults{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Kundenergebnisse",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Überschrift"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Kundenergebnisse"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Unterüberschrift",
+      "default": "<p>Sehen Sie die beeindruckenden Ergebnisse unserer zufriedenen Kunden</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Textausrichtung",
+      "options": [
+        {
+          "value": "left",
+          "label": "Links"
+        },
+        {
+          "value": "center",
+          "label": "Zentriert"
+        },
+        {
+          "value": "right",
+          "label": "Rechts"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Überschrift Schriftart",
+      "default": "harmonia_sans_n6"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Überschrift Größe",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Überschrift Farbe",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Unterüberschrift Größe",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Unterüberschrift Farbe",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "spacing_below_heading",
+      "label": "Abstand unter Überschrift",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Spalten Desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Spalten Tablet",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Spalten Mobil",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Abstand zwischen Bildern",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximale Breite",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Abstand oben/unten",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Bilder"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Bildverhältnis",
+      "options": [
+        {
+          "value": "100",
+          "label": "Quadratisch (1:1)"
+        },
+        {
+          "value": "75",
+          "label": "Landschaft (4:3)"
+        },
+        {
+          "value": "66.67",
+          "label": "Landschaft (3:2)"
+        },
+        {
+          "value": "150",
+          "label": "Hochformat (2:3)"
+        },
+        {
+          "value": "133.33",
+          "label": "Hochformat (3:4)"
+        }
+      ],
+      "default": "100"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Bild Eckenradius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Bild Hintergrund",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "header",
+      "content": "Bildunterschriften"
+    },
+    {
+      "type": "range",
+      "id": "caption_size",
+      "label": "Bildunterschrift Größe",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Bildunterschrift Farbe",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "caption_padding",
+      "label": "Bildunterschrift Innenabstand",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Farben"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hintergrundfarbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Bild 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_1",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_2",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_3",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_4",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_5",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_6",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_7",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_7",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_8",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_8",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_9",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_9",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 10"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_10",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_10",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 11"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_11",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_11",
+      "label": "Bildunterschrift"
+    },
+    {
+      "type": "header",
+      "content": "Bild 12"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_12",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "caption_12",
+      "label": "Bildunterschrift"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kundenergebnisse"
+    }
+  ]
+}
 {% endschema %}
