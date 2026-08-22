@@ -1,6 +1,642 @@
+{% doc %}
+  @prompt
+    Section: "Dauerhafte Haarentfernung – Services"
+    
+    Desktop (1024px+):
+    
+    Zweigeteilte Tabelle: Service-Name (60%) | Dauer (40%)
+    Header: Bold, #333, 20px
+    Service-Namen: 16px, #333
+    Dauer: Bold, 16px, 
+    #0066cc, rechtsbündig
+    Padding: 32px
+    Zeilenhöhe: 16px Abstand
+    Rahmen: 8px border-radius, 
+    #e0e0e0 Border
+    
+    Tablet (768px – 1023px):
+    
+    Tabelle bleibt zweigeteilig
+    Padding: 24px
+    Service-Namen: 15px
+    Dauer: 15px
+    Spalten-Verhältnis: 65% | 35%
+    
+    Mobile (< 768px):
+    
+    Layout-Wechsel: Von Tabelle zu Stack-Layout
+    Jede Zeile wird vertical Card (Service oben, Dauer unten)
+    Service-Namen: 14px, bold, #333
+    Dauer: 14px, bold, 
+    #0066cc, linksbündig (oder oben rechts)
+    Padding pro Card: 16px
+    Margin zwischen Cards: 12px
+    Volles Padding außen: 16px
+    Kein Horizontal-Scroll, alles lesbar ohne Zoom
+    
+    Button (alle Geräte):
+    
+    Desktop: 240px Breite, zentriert
+    Tablet: 100% Breite, max 240px
+    Mobile: 100% Breite mit 16px Margin-sides
+    Margin-top: 24px (Desktop/Tablet), 20px (Mobile)
+    Höhe: 44px (Touch-friendly auf Mobile)
+    Font: 14px (Mobile), 16px (Desktop)
+    
+    Weitere Mobile-Optimierungen:
+    
+    Touch-Ziele: Min. 44px Höhe
+    Font-Size: Nirgends unter 14px (bessere Lesbarkeit)
+    Keine Hover-States auf Mobile nötig (nur Active/Pressed)
+    Breakpoint 480px extra Check: Sehr kleine Phones (iPhone SE)
+    
+    Accessibility:
+    
+    Tabelle mit semantic HTML (<table>, <thead>, <tbody>)
+    Button mit ARIA-Label: aria-label="Termin buchen"
+    Kontrast: Dauer (
+    #0066cc) mind. 4.5:1 gegen Hintergrund
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-services-table-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-services-table__container-{{ ai_gen_id }} {
+    background-color: {{ block.settings.background_color }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: 32px;
+  }
+
+  .ai-services-table__heading-{{ ai_gen_id }} {
+    font-size: 28px;
+    font-weight: bold;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 24px 0;
+    text-align: {{ block.settings.heading_alignment }};
+  }
+
+  .ai-services-table__table-{{ ai_gen_id }} {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .ai-services-table__header-{{ ai_gen_id }} {
+    border-bottom: 2px solid {{ block.settings.border_color }};
+  }
+
+  .ai-services-table__header-cell-{{ ai_gen_id }} {
+    font-size: 20px;
+    font-weight: bold;
+    color: {{ block.settings.header_text_color }};
+    padding-bottom: 16px;
+    text-align: left;
+  }
+
+  .ai-services-table__header-cell-{{ ai_gen_id }}:last-child {
+    text-align: right;
+    width: 40%;
+  }
+
+  .ai-services-table__header-cell-{{ ai_gen_id }}:first-child {
+    width: 60%;
+  }
+
+  .ai-services-table__row-{{ ai_gen_id }} {
+    border-bottom: 1px solid {{ block.settings.border_color }};
+  }
+
+  .ai-services-table__row-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-services-table__cell-{{ ai_gen_id }} {
+    padding: 16px 0;
+    font-size: 16px;
+    color: {{ block.settings.service_text_color }};
+  }
+
+  .ai-services-table__service-name-{{ ai_gen_id }} {
+    text-align: left;
+  }
+
+  .ai-services-table__duration-{{ ai_gen_id }} {
+    text-align: right;
+    font-weight: bold;
+    color: {{ block.settings.duration_color }};
+  }
+
+  .ai-services-table__mobile-card-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-services-table__button-wrapper-{{ ai_gen_id }} {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .ai-services-table__button-{{ ai_gen_id }} {
+    display: inline-block;
+    width: 240px;
+    max-width: 100%;
+    height: 48px;
+    padding: 0 24px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    line-height: 48px;
+    text-align: center;
+  }
+
+  .ai-services-table__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  @media screen and (max-width: 1023px) and (min-width: 768px) {
+    .ai-services-table__container-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+
+    .ai-services-table__header-cell-{{ ai_gen_id }} {
+      font-size: 18px;
+    }
+
+    .ai-services-table__header-cell-{{ ai_gen_id }}:first-child {
+      width: 65%;
+    }
+
+    .ai-services-table__header-cell-{{ ai_gen_id }}:last-child {
+      width: 35%;
+    }
+
+    .ai-services-table__cell-{{ ai_gen_id }} {
+      font-size: 15px;
+    }
+
+    .ai-services-table__button-{{ ai_gen_id }} {
+      width: 100%;
+      max-width: 240px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .ai-services-table__container-{{ ai_gen_id }} {
+      padding: 16px;
+    }
+
+    .ai-services-table__heading-{{ ai_gen_id }} {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .ai-services-table__table-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-services-table__mobile-cards-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-services-table__mobile-card-{{ ai_gen_id }} {
+      display: flex;
+      flex-direction: column;
+      background-color: {{ block.settings.card_background_color }};
+      border: 1px solid {{ block.settings.border_color }};
+      border-radius: {{ block.settings.card_border_radius }}px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .ai-services-table__mobile-card-{{ ai_gen_id }}:last-child {
+      margin-bottom: 0;
+    }
+
+    .ai-services-table__mobile-service-{{ ai_gen_id }} {
+      font-size: 14px;
+      font-weight: bold;
+      color: {{ block.settings.service_text_color }};
+      margin-bottom: 8px;
+    }
+
+    .ai-services-table__mobile-duration-{{ ai_gen_id }} {
+      font-size: 14px;
+      font-weight: bold;
+      color: {{ block.settings.duration_color }};
+    }
+
+    .ai-services-table__button-wrapper-{{ ai_gen_id }} {
+      margin-top: 20px;
+    }
+
+    .ai-services-table__button-{{ ai_gen_id }} {
+      width: 100%;
+      height: 44px;
+      line-height: 44px;
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .ai-services-table__heading-{{ ai_gen_id }} {
+      font-size: 20px;
+    }
+
+    .ai-services-table__mobile-service-{{ ai_gen_id }},
+    .ai-services-table__mobile-duration-{{ ai_gen_id }} {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<services-table-{{ ai_gen_id }}
+  class="ai-services-table-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-services-table__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-services-table__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <table class="ai-services-table__table-{{ ai_gen_id }}" role="table">
+      <thead class="ai-services-table__header-{{ ai_gen_id }}">
+        <tr>
+          <th class="ai-services-table__header-cell-{{ ai_gen_id }}" scope="col">
+            {{ block.settings.service_header }}
+          </th>
+          <th class="ai-services-table__header-cell-{{ ai_gen_id }}" scope="col">
+            {{ block.settings.duration_header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in (1..10) %}
+          {% assign service_key = 'service_' | append: i %}
+          {% assign duration_key = 'duration_' | append: i %}
+          {% assign service_name = block.settings[service_key] %}
+          {% assign duration = block.settings[duration_key] %}
+
+          {% if service_name != blank %}
+            <tr class="ai-services-table__row-{{ ai_gen_id }}">
+              <td class="ai-services-table__cell-{{ ai_gen_id }} ai-services-table__service-name-{{ ai_gen_id }}">
+                {{ service_name }}
+              </td>
+              <td class="ai-services-table__cell-{{ ai_gen_id }} ai-services-table__duration-{{ ai_gen_id }}">
+                {{ duration }}
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="ai-services-table__mobile-cards-{{ ai_gen_id }}">
+      {% for i in (1..10) %}
+        {% assign service_key = 'service_' | append: i %}
+        {% assign duration_key = 'duration_' | append: i %}
+        {% assign service_name = block.settings[service_key] %}
+        {% assign duration = block.settings[duration_key] %}
+
+        {% if service_name != blank %}
+          <div class="ai-services-table__mobile-card-{{ ai_gen_id }}">
+            <div class="ai-services-table__mobile-service-{{ ai_gen_id }}">
+              {{ service_name }}
+            </div>
+            <div class="ai-services-table__mobile-duration-{{ ai_gen_id }}">
+              {{ duration }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if block.settings.button_text != blank %}
+      <div class="ai-services-table__button-wrapper-{{ ai_gen_id }}">
+        <a
+          href="{{ block.settings.button_link }}"
+          class="ai-services-table__button-{{ ai_gen_id }}"
+          aria-label="{{ block.settings.button_aria_label }}"
+        >
+          {{ block.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</services-table-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ServicesTable{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('services-table-{{ ai_gen_id }}', ServicesTable{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Services table",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Dauerhafte Haarentfernung – Services"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Table headers"
+    },
+    {
+      "type": "text",
+      "id": "service_header",
+      "label": "Service column header",
+      "default": "Service"
+    },
+    {
+      "type": "text",
+      "id": "duration_header",
+      "label": "Duration column header",
+      "default": "Dauer"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header text color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Services"
+    },
+    {
+      "type": "text",
+      "id": "service_1",
+      "label": "Service 1 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_1",
+      "label": "Service 1 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_2",
+      "label": "Service 2 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_2",
+      "label": "Service 2 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_3",
+      "label": "Service 3 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_3",
+      "label": "Service 3 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_4",
+      "label": "Service 4 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_4",
+      "label": "Service 4 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_5",
+      "label": "Service 5 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_5",
+      "label": "Service 5 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_6",
+      "label": "Service 6 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_6",
+      "label": "Service 6 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_7",
+      "label": "Service 7 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_7",
+      "label": "Service 7 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_8",
+      "label": "Service 8 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_8",
+      "label": "Service 8 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_9",
+      "label": "Service 9 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_9",
+      "label": "Service 9 duration"
+    },
+    {
+      "type": "text",
+      "id": "service_10",
+      "label": "Service 10 name"
+    },
+    {
+      "type": "text",
+      "id": "duration_10",
+      "label": "Service 10 duration"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Termin buchen"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "button_aria_label",
+      "label": "Button accessibility label",
+      "default": "Termin buchen"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#0066cc"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#0052a3"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "service_text_color",
+      "label": "Service text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "duration_color",
+      "label": "Duration color",
+      "default": "#0066cc"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Mobile card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Table border radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Mobile card border radius",
+      "min": 0,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services table"
+    }
+  ]
+}
 {% endschema %}
