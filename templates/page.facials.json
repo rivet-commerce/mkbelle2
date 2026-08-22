@@ -12,9 +12,99 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "blocks_EHm3at": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1bbf458_jpACAT": {
+          "type": "ai_gen_block_1bbf458",
+          "settings": {
+            "heading": "Dauerhafte Haarentfernung – Services",
+            "heading_alignment": "left",
+            "heading_color": "#000000",
+            "service_header": "Service",
+            "duration_header": "Dauer",
+            "header_text_color": "#000000",
+            "service_1": "Behandlung von Narben ",
+            "duration_1": "75 min",
+            "service_2": "Behandlung Pigmentflecken",
+            "duration_2": "15 min",
+            "service_3": "Dehnungsstreifen Behandlung",
+            "duration_3": "75 min",
+            "service_4": "",
+            "duration_4": "",
+            "service_5": "",
+            "duration_5": "",
+            "service_6": "",
+            "duration_6": "",
+            "service_7": "",
+            "duration_7": "",
+            "service_8": "",
+            "duration_8": "",
+            "service_9": "",
+            "duration_9": "",
+            "service_10": "",
+            "duration_10": "",
+            "service_11": "",
+            "duration_11": "",
+            "service_12": "",
+            "duration_12": "",
+            "service_13": "",
+            "duration_13": "",
+            "service_14": "",
+            "duration_14": "",
+            "service_15": "",
+            "duration_15": "",
+            "service_16": "",
+            "duration_16": "",
+            "service_17": "",
+            "duration_17": "",
+            "service_18": "",
+            "duration_18": "",
+            "service_19": "",
+            "duration_19": "",
+            "service_20": "",
+            "duration_20": "",
+            "button_text": "Termin buchen",
+            "button_link": "https://www.treatwell.de/ort/mk-beauty-ruettenscheid/",
+            "button_aria_label": "Termin buchen",
+            "button_color": "#C9AD95",
+            "button_hover_color": "#C9AD95",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 4,
+            "background_color": "#ffffff",
+            "service_text_color": "#000000",
+            "duration_color": "#000000",
+            "border_color": "rgba(0,0,0,0)",
+            "card_background_color": "#C9AD95",
+            "desktop_width_percent": 100,
+            "border_radius": 8,
+            "card_border_radius": 8
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1bbf458_jpACAT"
+      ],
+      "name": "Services table",
+      "settings": {}
+    },
+    "contact_form_AEgAJc": {
+      "type": "contact-form",
+      "name": "Contact form",
+      "settings": {
+        "title": "",
+        "text": "",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "1"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "blocks_EHm3at",
+    "contact_form_AEgAJc"
   ]
 }
