@@ -334,7 +334,8 @@
             "button_color": "#c9ad95",
             "button_text_color": "#e8e8e1",
             "button_hover_color": "#e8e8e1",
-            "button_hover_text_color": "#000000"
+            "button_hover_text_color": "#000000",
+            "product_image": "shopify://shop_images/ChatGPTImage25.Aug.2026_21_43_36.png"
           },
           "blocks": {}
         }
