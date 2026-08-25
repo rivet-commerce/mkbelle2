@@ -326,7 +326,7 @@
             "badge_color": "#c9ad95",
             "badge_text_color": "#000000",
             "button_text": "Routine starten",
-            "button_link": "",
+            "button_link": "shopify://products/hanf-bundle",
             "button_font_size": 16,
             "button_padding_vertical": 16,
             "button_padding_horizontal": 40,
