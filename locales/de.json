@@ -328,7 +328,7 @@
       "sale": "Reduziert",
       "sale_price": "Sonderpreis",
       "regular_price": "Normaler Preis",
-      "from_text_html": "<span>Von</span> {{ price }}",
+      "from_text_html": "<span>ab</span> {{ price }}",
       "quick_shop": "Schnellkauf",
       "more_from_html": "Mehr von {{ link }}",
       "recent_products": "Zuletzt Angesehen",
