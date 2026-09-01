@@ -225,20 +225,27 @@
       "toolbar": {
         "type": "toolbar",
         "blocks": {
+          "announcement_7j9LT6": {
+            "type": "announcement",
+            "settings": {
+              "richtext": "<p>Gratis Überraschung ab 99€</p>",
+              "richtext_mobile": "<p>Gratis Überraschung ab 99€</p>"
+            }
+          },
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "richtext": "<p><strong>Sichere dir 10 % Rabatt ab 50 € Bestellwert – mit dem Code MKBeauty10</strong></p>",
-              "richtext_mobile": ""
+              "richtext": "<p><strong>Versandkostenfrei ab 49€</strong></p>",
+              "richtext_mobile": "<p><strong>Versandkostenfrei ab 49€</strong></p>"
             }
           }
         },
         "block_order": [
+          "announcement_7j9LT6",
           "0b066516-effd-470b-ba3b-fc9f69d6c6ae"
         ],
         "settings": {
-          "announcement_center": false,
+          "announcement_center": true,
           "toolbar_social": false,
           "show_locale_selector": false,
           "show_currency_selector": false
