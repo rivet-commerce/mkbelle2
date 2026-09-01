@@ -188,114 +188,6 @@
         "divider": false
       }
     },
-    "featured_collections_McHQLW": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_CQniy8": {
-          "type": "collection",
-          "settings": {
-            "collection": "creme",
-            "title": ""
-          }
-        },
-        "collection_AWjapF": {
-          "type": "collection",
-          "settings": {
-            "collection": "fluids",
-            "title": ""
-          }
-        },
-        "collection_mTdApa": {
-          "type": "collection",
-          "settings": {
-            "collection": "lash",
-            "title": ""
-          }
-        },
-        "collection_mHFzVW": {
-          "type": "collection",
-          "settings": {
-            "collection": "masken",
-            "title": ""
-          }
-        },
-        "collection_Ebacpm": {
-          "type": "collection",
-          "settings": {
-            "collection": "peeling",
-            "title": ""
-          }
-        },
-        "collection_96zBny": {
-          "type": "collection",
-          "settings": {
-            "collection": "reinigung",
-            "title": ""
-          }
-        },
-        "collection_rTYQm3": {
-          "type": "collection",
-          "settings": {
-            "collection": "seren",
-            "title": ""
-          }
-        },
-        "collection_QUkRem": {
-          "type": "collection",
-          "settings": {
-            "collection": "drops",
-            "title": ""
-          }
-        },
-        "collection_3C8ppm": {
-          "type": "collection",
-          "settings": {
-            "collection": "medical",
-            "title": ""
-          }
-        },
-        "collection_DDyPqD": {
-          "type": "collection",
-          "settings": {
-            "collection": "augencreme",
-            "title": ""
-          }
-        },
-        "collection_HQaVat": {
-          "type": "collection",
-          "settings": {
-            "collection": "hand",
-            "title": ""
-          }
-        },
-        "collection_kNcGXN": {
-          "type": "collection",
-          "settings": {
-            "collection": "specials",
-            "title": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_CQniy8",
-        "collection_AWjapF",
-        "collection_mTdApa",
-        "collection_mHFzVW",
-        "collection_Ebacpm",
-        "collection_96zBny",
-        "collection_rTYQm3",
-        "collection_QUkRem",
-        "collection_3C8ppm",
-        "collection_DDyPqD",
-        "collection_HQaVat",
-        "collection_kNcGXN"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Kategorien",
-        "divider": false
-      }
-    },
     "1783858110f8836187": {
       "type": "_blocks",
       "blocks": {
@@ -497,48 +389,6 @@
       ],
       "disabled": true,
       "name": "Moniques Rountine Bundle",
-      "settings": {}
-    },
-    "1785098856e22546d3": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_29db6b9_BXEMkg": {
-          "type": "ai_gen_block_29db6b9",
-          "settings": {
-            "container_width": 1400,
-            "container_padding": 20,
-            "tile_gap": 20,
-            "tile_aspect_ratio": "16 / 9",
-            "tile_border_radius": 8,
-            "columns_mobile": "1",
-            "background_color": "#ffffff",
-            "title_font": "serif",
-            "title_size": 28,
-            "title_color": "#ffffff",
-            "title_letter_spacing": 1,
-            "button_size": 40,
-            "arrow_size": 14,
-            "button_bg_color": "#ffffff",
-            "button_arrow_color": "#333333",
-            "section_padding_top": 50,
-            "section_padding_bottom": 50,
-            "tile_1_title": "Gesichtspflege",
-            "tile_1_collection": "",
-            "tile_2_title": "Körperpflege",
-            "tile_2_collection": "",
-            "tile_3_title": "Seren & Öle",
-            "tile_3_collection": "",
-            "tile_4_title": "Bestseller",
-            "tile_4_collection": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_29db6b9_BXEMkg"
-      ],
-      "disabled": true,
-      "name": "Kategorie-Grid",
       "settings": {}
     },
     "17852622830676c412": {
@@ -747,12 +597,10 @@
   "order": [
     "slideshow-split",
     "featured-collections",
-    "featured_collections_McHQLW",
     "1783858110f8836187",
     "promo-grid",
     "17838599081e6f351e",
     "17838587141d93d752",
-    "1785098856e22546d3",
     "17852622830676c412",
     "promo-grid2",
     "faq_Yn8zng",
