@@ -255,27 +255,17 @@
               "enable_account_link": false
             }
           },
-          "fe6a67a0-686e-435b-a946-f28802053c97": {
-            "type": "contact",
-            "settings": {
-              "phone": "+49 (0) 157 38281033",
-              "contact": "",
-              "chat": "",
-              "enable_social": true
-            }
-          },
           "c296bc3e-1d7f-4750-b993-050176521596": {
             "type": "payment",
             "settings": {
               "show_payment_icons": true,
               "show_locale_selector": false,
-              "show_currency_selector": true
+              "show_currency_selector": false
             }
           }
         },
         "block_order": [
           "footer-0",
-          "fe6a67a0-686e-435b-a946-f28802053c97",
           "c296bc3e-1d7f-4750-b993-050176521596"
         ],
         "settings": {
