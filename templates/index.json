@@ -474,6 +474,7 @@
         "promo-grid-2-1",
         "promo-grid-2-2"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "gutter_size": 20,
