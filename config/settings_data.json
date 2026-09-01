@@ -279,7 +279,7 @@
           "c296bc3e-1d7f-4750-b993-050176521596"
         ],
         "settings": {
-          "show_newsletter": true,
+          "show_newsletter": false,
           "newsletter_richtext": "<p>Melde dich jetzt an & verpasse keine unserer aktuellen Aktionen mehr!</p>",
           "footer_main_menu": false,
           "show_copyright": true,

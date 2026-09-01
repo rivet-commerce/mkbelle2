@@ -685,6 +685,36 @@
         "autoplay": true,
         "autoplay_speed": 5
       }
+    },
+    "newsletter_PfmAcU": {
+      "type": "newsletter",
+      "blocks": {
+        "title_RrxnFR": {
+          "type": "title",
+          "settings": {
+            "title": "Sign up and save"
+          }
+        },
+        "text_XP3dra": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          }
+        },
+        "form_VK8d7f": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_RrxnFR",
+        "text_XP3dra",
+        "form_VK8d7f"
+      ],
+      "name": "Email signup",
+      "settings": {
+        "color_scheme": "1"
+      }
     }
   },
   "order": [
@@ -698,6 +728,7 @@
     "1785098856e22546d3",
     "17852622830676c412",
     "promo-grid2",
-    "slideshow"
+    "slideshow",
+    "newsletter_PfmAcU"
   ]
 }
