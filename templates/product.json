@@ -154,7 +154,7 @@
           "type": "tab",
           "settings": {
             "title": "Informationen",
-            "content": "<p>{{ product.metafields.custom.hersteller | metafield_tag }}</p>",
+            "content": "<p><span style=\"text-decoration:underline\">Hersteller:</span><br/>Dirnbergermühle Cosmetic Manufaktur GmbH <br/> Dirnbergermühle 1<br/>85126 Münchsmünster<br/> Deutschland</p>",
             "page": ""
           }
         },
