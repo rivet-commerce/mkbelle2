@@ -235,6 +235,7 @@
       "block_order": [
         "ai_gen_block_7c3c665_rpdP78"
       ],
+      "disabled": true,
       "name": "New Product Display",
       "settings": {}
     },
@@ -327,6 +328,7 @@
       "block_order": [
         "ai_gen_block_c1cc1a4_qbr3EQ"
       ],
+      "disabled": true,
       "name": "Skincare routine",
       "settings": {}
     },
@@ -504,6 +506,7 @@
         "question_gXGcKH",
         "question_HMCANN"
       ],
+      "disabled": true,
       "name": "FAQ",
       "settings": {
         "title": "FAQs"
