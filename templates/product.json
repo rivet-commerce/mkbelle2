@@ -19,6 +19,24 @@
             "widget_id": ""
           }
         },
+        "sectionheroes_md_product_pills_eCrqJB": {
+          "type": "shopify://apps/sectionheroes/blocks/md_product-pills/019abad6-4363-7418-bd8f-a8feb1296bd6",
+          "settings": {
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "p_txt": "Vegan; Tierversuchsfrei; Made in Germany",
+            "bg1": "#FAF4EB",
+            "bg2": "#FAF4EB",
+            "bg3": "#FAF4EB",
+            "bg4": "#FAF4EB",
+            "bg": "#FAF4EB",
+            "tc": "#000000",
+            "fs": 12,
+            "br": 50,
+            "padding_tb": 0,
+            "padding_lr": 20
+          }
+        },
         "title_ctLdWw": {
           "type": "title",
           "settings": {
@@ -168,6 +186,7 @@
       },
       "block_order": [
         "reviews_io_reviewsio_rating_bar_napWcy",
+        "sectionheroes_md_product_pills_eCrqJB",
         "title_ctLdWw",
         "text_3d7LUB",
         "price",
@@ -456,6 +475,7 @@
         },
         "question_QLXLn9": {
           "type": "question",
+          "disabled": true,
           "settings": {
             "title": "Sind eure Produkte dermatolisch getestet ?",
             "text": "<p><strong>Ja</strong>, unsere Produkte sind <strong>alle dermatologisch getestet. </strong>Die Hautverträglichkeit wurde in unabhängigen Tests sorgfältig geprüft und bestätigt, sodass du sie auch bei empfindlicher Haut bedenkenlos anwenden kannst.</p>"
